@@ -1,0 +1,479 @@
+﻿@import './theme';
+
+// these appear to be overrides for the contest-summary component
+// using them in Shared/_LandAndVoteLayout.cshtml
+
+body {
+    overflow: hidden;
+    height: 100vh;
+}
+
+a {
+    &:focus {
+        outline: none;
+    }
+}
+
+.contest-summary-text {
+    color: $contest-summary-color;
+    cursor: pointer;
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 70px;
+    padding: 10px 15px;
+    text-decoration: none;
+
+    &.done {
+        background-color: $contest-summary-done-background-color;
+
+        .contest-summary-title {
+            font-weight: bold;
+        }
+    }
+}
+
+.contest-summary-title {
+    font-size: 1.25rem;
+}
+
+.contest-summary-selected {
+    color: $contest-summary-selected-color;
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+
+// from the EC file C:\Original Site Source\admin-application-develop\admin\grails-app\assets\stylesheets\components\_elect.scss
+
+.contest-instructions {
+    display: flex;
+    border-bottom: 1px solid black;
+    /*text-align: left;*/
+    background-color: white;
+    color: black;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.2;
+    padding: 4px;
+}
+
+// my addition(s)
+
+.landing-title-text {
+    padding: 6px 10px 8px 10px;
+    text-align: left;
+    color: $black;
+    background-color: $ballot-content-background-color;
+    font-weight: bold;
+    font-size: 1.6em;
+    /*line-height: 1.2;*/
+}
+
+.landing-message-text {
+    /*margin-left: auto;*/
+    text-align: left;
+    background-color: $ballot-content-background-color;
+    color: $black;
+    font-weight: normal;
+    font-size: 1em;
+    /*line-height: 1.2;*/
+    padding: 4px;
+}
+
+
+// from the EC file summary.component.scss
+
+// was :host -- for the sidebar, mainly
+// .ballot-main
+
+.lav-page-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.lav-under-toolbar-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+
+.lav-sidebar-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    /*justify-content: space-between;*/
+    height: 100%;
+    min-height: 100%;
+    position: relative;
+    width: $summary-sidebar-width;
+    z-index: 1;
+
+    &.sidebar {
+        display: none;
+
+        @media screen and (min-width: $breakpoint-mobile-lg) {
+            display: flex;
+        }
+
+        background-color: $summary-background-color;
+        flex: 0 0 $summary-sidebar-width;
+        height: 100%;
+        min-height: 100%;
+
+        .ballot-header,
+        .summary-message,
+        .contest-summary-text,
+        .ballot-filler {
+            border-right: 1px solid $summary-border-color;
+        }
+
+        .column-filler {
+            flex: 1 1 auto;
+        }
+
+        .bottom {
+            border-color: $summary-border-color;
+            border-right: 1px solid $summary-border-color;
+        }
+
+        .elect-action {
+            &:only-child {
+                .action-button {
+                    background-color: $summary-review-background-color;
+                    border-color: $summary-background-color;
+                }
+
+                .action-text {
+                    color: $summary-review-color;
+                    font-size: .9rem;
+                }
+            }
+        }
+
+        .scroll-content {
+            margin: 0;
+        }
+
+        .summary-message {
+            margin: 0;
+            padding: 15px;
+        }
+
+        .ballot-header {
+            border-bottom-color: $summary-header-border-color;
+            display: block;
+            margin-bottom: 0;
+            padding-top: 5px;
+
+            .ballot-header-title {
+                color: $summary-header-color;
+                font-size: 1.4rem;
+                font-weight: normal;
+            }
+        }
+
+        .contest-summary {
+            border-bottom-width: 0;
+
+            &:first-child {
+                border-top-width: 0;
+            }
+        }
+
+        .end-of-list {
+            display: none;
+        }
+
+        .contest-summary-text {
+            border-bottom: 1px solid transparent;
+            border-right: 1px solid $summary-border-color;
+            border-top: 1px solid transparent;
+
+            &.done {
+                background-color: transparent;
+            }
+
+            &.active {
+                background-color: $contest-summary-active-background-color;
+                border-right-width: 0;
+            }
+        }
+    }
+}
+
+/*
+    the following came from "contest.component.scss"
+*/
+.ballot-header-title {
+    h2,
+    p {
+        margin: 0;
+    }
+
+    h2 {
+        font-size: 1.375rem;
+
+        &:only-child {
+            font-size: 1.8rem;
+        }
+    }
+
+    p {
+        font-size: 1rem;
+        font-weight: normal;
+    }
+}
+
+.contest-limit {
+    flex: 0 0 auto;
+    padding: 5px;
+    text-align: right;
+}
+
+.contest-next {
+    flex: 0 0 auto;
+    padding: 5px;
+}
+
+.next-contest-icon {
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+        order: 10;
+    }
+}
+
+.contest-message {
+    margin: 0;
+    padding: 15px;
+}
+
+.scroll-content {
+    &.contest-scroll {
+        padding: 0;
+    }
+}
+
+.ballot-main {
+    align-items: center;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+.ballot-contest {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.ballot-view {
+    &.summary {
+        display: none;
+
+        @media screen and (min-width: $breakpoint-mobile-lg) {
+            display: flex;
+        }
+    }
+}
+// not sure about where the following came from yet. (SKF 5/21/19)
+.ballot-header {
+    .ballot-header-title {
+        align-items: center;
+        display: flex;
+    }
+
+    background-color: transparent;
+}
+
+.ballot-content {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.ballot-complete {
+    align-items: center;
+    display: flex;
+}
+
+.complete-icon {
+    display: inline-block;
+    height: 25px;
+    margin-left: 8px;
+    width: 25px;
+}
+
+
+
+.sidebar-header-container {
+    /*border-bottom: 1px solid $contest-summary-border-color;
+
+    &:nth-child(3) {
+        border-bottom: 1px solid $contest-summary-border-color;
+    } */
+}
+
+.sidebar-title-text {
+    flex: 0 0 auto;
+    color: $contest-summary-color;
+    padding: 4px 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    /*&.done {
+        background-color: $contest-summary-done-background-color;
+
+        .contest-summary-title {
+            font-weight: bold;
+        }
+    }*/
+}
+
+.sidebar-progress {
+    flex: 0 0 auto;
+    text-align: left;
+    margin: 0;
+    padding: 6px 15px 4px 15px;
+    border-bottom: 1px solid $contest-summary-border-color;
+}
+
+.sidebar-message-text {
+    display: block;
+    font-size: 0.9em;
+    padding: 12px 15px;
+}
+
+
+.scroll-content {
+    &.summary-scroll {
+        flex: 0 0 auto;
+        padding: 0;
+    }
+}
+
+.scroll-content {
+    &.contest-scroll {
+        padding: 0;
+    }
+}
+
+.ballot-filler {
+    flex: 1 1 auto;
+}
+
+.summary-message {
+    display: block;
+    font-size: 0.9em;
+    padding: 30px 15px;
+}
+
+.summary-contests {
+    width: 100%;
+}
+
+.contest-summary {
+    border-bottom: 1px solid $contest-summary-border-color;
+
+    &:first-child {
+        border-top: 1px solid $contest-summary-border-color;
+    }
+}
+//
+// from contest-review.component.scss
+//
+.contest-review-header {
+    align-items: center;
+    display: flex;
+    padding: 0 15px;
+}
+
+.contest-review-text {
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 70px;
+    padding: 10px 0;
+    text-decoration: none;
+}
+
+.contest-review-title {
+    font-size: 1.375rem;
+    font-weight: bold;
+}
+
+.contest-review-selected {
+    color: $contest-review-selected-color;
+    font-size: 1rem;
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+        text-align: right;
+    }
+}
+
+.contest-review-choices {
+    align-items: flex-end;
+    display: block;
+    padding: 0 15px 10px;
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+        display: flex;
+    }
+
+    .choice-list {
+        flex: 0 1 100%;
+    }
+
+    .choice-list,
+    .change-selection {
+        margin-bottom: 10px;
+    }
+}
+
+.write-in {
+    font-size: .9rem;
+    font-style: italic;
+    padding: 15px 0;
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+        width: 60%;
+    }
+
+    .write-in-value {
+        font-size: 1rem;
+        font-style: normal;
+    }
+}
+
+.change-selection {
+    background-color: $contest-review-change-background-color;
+    border: 2px solid $contest-review-change-background-color;
+    border-radius: 20px;
+    color: $contest-review-change-color;
+    display: inline-block;
+    flex: 0 0 auto;
+    font-size: .8rem;
+    font-weight: bold;
+    padding: 6px 20px;
+    text-decoration: none;
+}

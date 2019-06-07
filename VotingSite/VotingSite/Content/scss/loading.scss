@@ -1,0 +1,252 @@
+@import './ec_variables';
+
+$orbit-speed: 3.5s;
+$grow-speed: 4s;
+$wave-speed: 2.5s;
+
+$loading-background: rgba(255, 255, 255, .9);
+
+$waves-inactive: $lightest-grey;
+$waves-active: $primary-medium;
+
+.loading {
+  .loading-screen {
+    display: flex;
+    opacity: 1;
+  }
+
+  &.loading-leave,
+  &.loading-enter {
+    .loading-screen {
+      display: flex;
+      opacity: 0;
+    }
+  }
+}
+
+.loading-screen {
+  align-items: center;
+  background-color: $loading-background;
+  bottom: 0;
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity .3s ease;
+  visibility: visible !important; //sass-lint:disable-line no-important
+  width: 100%;
+  z-index: 10000;
+}
+
+.orbit {
+  height: 80px;
+  margin-bottom: 23px;
+  position: relative;
+  width: 58px;
+}
+
+.grow {
+  height: 100px;
+  margin-bottom: 5px;
+  position: relative;
+  width: 73px;
+}
+
+.grow-logo {
+  animation: grow $grow-speed ease infinite;
+  height: 100px;
+  position: absolute;
+  width: 73px;
+}
+
+.polygon {
+  animation: polygon $orbit-speed cubic-bezier(.15, .05, .85, .95) infinite;
+  height: 80px;
+  position: absolute;
+  width: 58px;
+}
+
+.circle {
+  animation: circle $orbit-speed cubic-bezier(.15, .05, .85, .95) infinite;
+  height: 11px;
+  left: 25px;
+  position: absolute;
+  top: 35px;
+  width: 11px;
+
+  .inner {
+    animation: circle-inner $orbit-speed cubic-bezier(.15, .05, .85, .95) infinite;
+    height: 100%;
+    width: 100%;
+  }
+
+  svg {
+    position: relative;
+    top: -3px;
+  }
+}
+
+.waves {
+  height: 75px;
+  width: 130px;
+
+  span {
+    background: $waves-inactive;
+    border-radius: 14px;
+    display: block;
+    float: left;
+    height: 10%;
+    margin-right: 2.85%;
+    margin-top: 25%;
+    width: 4%;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:nth-child(1) {
+      animation: wave $wave-speed 1.4s infinite linear;
+    }
+
+    &:nth-child(2) {
+      animation: wave $wave-speed 1.2s infinite linear;
+    }
+
+    &:nth-child(3) {
+      animation: wave $wave-speed 1s infinite linear;
+    }
+
+    &:nth-child(4) {
+      animation: wave $wave-speed .8s infinite linear;
+    }
+
+    &:nth-child(5) {
+      animation: wave $wave-speed .6s infinite linear;
+    }
+
+    &:nth-child(6) {
+      animation: wave $wave-speed .4s infinite linear;
+    }
+
+    &:nth-child(7) {
+      animation: wave $wave-speed .2s infinite linear;
+    }
+
+    &:nth-child(8) {
+      animation: wave $wave-speed 0s infinite linear;
+    }
+
+    &:nth-child(9) {
+      animation: wave $wave-speed .2s infinite linear;
+    }
+
+    &:nth-child(10) {
+      animation: wave $wave-speed .4s infinite linear;
+    }
+
+    &:nth-child(11) {
+      animation: wave $wave-speed .6s infinite linear;
+    }
+
+    &:nth-child(12) {
+      animation: wave $wave-speed .8s infinite linear;
+    }
+
+    &:nth-child(13) {
+      animation: wave $wave-speed 1s infinite linear;
+    }
+
+    &:nth-child(14) {
+      animation: wave $wave-speed 1.2s infinite linear;
+    }
+
+    &:nth-child(15) {
+      animation: wave $wave-speed 1.4s infinite linear;
+    }
+  }
+}
+
+@keyframes wave {
+  0% {
+    background: $waves-inactive;
+    height: 10%;
+    margin-top: 25%;
+  }
+
+  50% {
+    background: $waves-active;
+    height: 100%;
+    margin-top: 0%;
+  }
+
+  100% {
+    background: $waves-inactive;
+    height: 10%;
+    margin-top: 25%;
+  }
+}
+
+@keyframes circle {
+  0%,
+  5% {
+    transform: scale(1) rotate(54deg) translateX(58px) rotate(-54deg);
+  }
+
+  95%,
+  100% {
+    transform: scale(1) rotate(1134deg) translateX(58px) rotate(-1134deg);
+  }
+}
+
+@keyframes circle-inner {
+  0%,
+  5% {
+    transform: scale(1);
+  }
+
+  15%,
+  85% {
+    transform: scale(1.3);
+  }
+
+  95%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes polygon {
+  0%,
+  5% {
+    transform: scale(1);
+  }
+
+  35%,
+  65% {
+    transform: scale(.95);
+  }
+
+  95%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(.75);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

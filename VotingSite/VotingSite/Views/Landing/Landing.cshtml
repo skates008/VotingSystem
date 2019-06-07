@@ -1,0 +1,65 @@
+﻿@model VotingSite.UiDependentModels.LandingPgViewModel
+
+@{
+    ViewBag.Title = "Landing Page - Logged In";
+    Layout = "~/Views/Shared/_LandAndVoteLayout.cshtml";
+}
+
+@* This [whole 'page'] is rendered within <div class="ballot-contest" ...> *@
+<div class="ballot-content">
+
+    <div class="scroll-content contest-scroll">
+
+        <div class="ballot-header">
+            <div class="ballot-header-title">
+                <h2>@Model.LandingPageTitle</h2>
+            </div>
+        </div>
+
+        <div class="contest-instructions">
+            @Html.Raw(Model.LandingPageMessage)
+        </div>
+
+        @*  AGAIN, not ON THE LANDING PAGE. CONTESTS will
+        <div class="contest-choices" *ngIf="contest && contest.choices">
+            <div class="simple-choices" *ngIf="contest.rules.voting === 'simple'">
+                <!-- <simple-choice *ngFor="let choice of contest.choices; let i = index" -->
+            </div>
+        </div>
+
+        <div class="end-of-list">
+            END OF LIST
+        </div>
+
+        *@
+
+    </div>
+</div>
+
+<div class="ballot-filler"></div>
+
+<div id="landAndVotePagesFooter" class="bottom" >
+
+    <div class="elect-toolbar bottom">
+        <div class="toolbar-background"></div>
+        <div class="toolbar-content">
+
+            <div class="elect-action">
+                <a class="action-button" href="@Url.Action("Index", "Voting")">
+                    <div class="action-icon-container next-contest-icon">
+                        <svg-icon src="~/Content/icons/navigation/carrot-right.svg" class="elect-action-icon"></svg-icon>
+                    </div>
+                    <span class="action-text">Start Voting</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/site/Landing_Index.js"></script>
+}

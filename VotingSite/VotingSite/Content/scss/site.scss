@@ -1,0 +1,11 @@
+﻿
+/* Any changes to bootstrap's code MUST go ABOVE this line. 
+@import "../bootstrap/bootstrap";   included by itself in the BundleConfig.cs file. -SKF
+*/
+
+// @import "./fontawesome.scss";
+@import "./ec_variables.scss";
+
+// any global overrides would go below this line.
+// that said, I'm trying to make sure that any overrides to any given page
+// or pages go in .scss/.css files for said page, or it's _Layout file. -SKF

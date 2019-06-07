@@ -1,0 +1,31 @@
+[
+  {
+    "ID": 1,
+    "BallotTypeID": 1,
+    "Title": "Position A",
+    "Description": "blank for CalPERS",
+    "MaxVotes": 200,
+    "SortOrder": 1
+  },
+  {
+    "ID": 2,
+    "BallotTypeID": 1,
+    "Title": "Position B",
+    "MaxVotes": 200,
+    "SortOrder": 2
+  },
+  {
+    "ID": 3,
+    "BallotTypeID": 2,
+    "Title": "Bank CEO",
+    "MaxVotes": 1,
+    "SortOrder": 2
+  },
+  {
+    "ID": 4,
+    "BallotTypeID": 2,
+    "Title": "Bank Chairman",
+    "MaxVotes": 1,
+    "SortOrder": 1
+  }
+]

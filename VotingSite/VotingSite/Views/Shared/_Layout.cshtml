@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link id="favicon" rel="icon" type="image/x-icon" href="">
+    <title>@ViewBag.Title - Voter Login</title>
+
+    @Styles.Render("~/Content/loginPage") @* replaces the /css bundle *@
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <div id="loginPageWrapper" class="d-flex view-container">
+        <div class="elect-toolbar top">
+            @* Cannot find a class called top in all of the EC code. -SKF 5/13/19 *@
+            <div class="toolbar-background"></div>
+            <div class="toolbar-content">
+
+                @* Page Content *@
+                <div class="election-info">
+                    <div class="election-title">@Model.ElectionName</div>
+                </div>
+
+                <div class="elect-actions">
+                    <div class="elect-action">
+                        <a class="action-button">
+                            <img src="~/Content/icons/action/settings.svg" class="elect-action-icon" alt="Gear Icon" />
+                            <span class="action-text">Settings</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="loginPageWrapper">
+            @RenderBody()
+        </div>
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

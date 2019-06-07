@@ -1,0 +1,44 @@
+﻿[
+  {
+    "outputFile": "Content/css/bootstrap.css",
+    "inputFile": "Content/bootstrap/bootstrap.scss",
+    "options": {
+      "sourceMap": true
+    }
+  },
+  {
+    "outputFile": "Content/css/site.css",
+    "inputFile": "Content/scss/site.scss",
+    "options": {
+      "sourceMap": true
+    }
+  },
+  {
+    "outputFile": "Content/css/index.css",
+    "inputFile": "Content/scss/index.scss",
+    "options": {
+      "sourceMap": true
+    }
+  },
+  {
+    "outputFile": "Content/css/toolbars.css",
+    "inputFile": "Content/scss/toolbars.scss",
+    "options": {
+      "sourceMap": true
+    }
+  },
+  {
+    "outputFile": "Content/css/loginPage.css",
+    "inputFile": "Content/scss/loginPage.scss",
+    "options": {
+      "sourceMap": true
+    }
+  },
+  {
+    "outputFile": "Content/css/landAndVoteLayout.css",
+    "inputFile": "Content/scss/landAndVoteLayout.scss",
+    "options": {
+      "sourceMap": true
+    }
+  }
+]

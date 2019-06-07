@@ -1,0 +1,122 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSiteAPI", "VotingSiteAPI\VotingSiteAPI.csproj", "{0A86527A-D587-4EC0-93F9-0FDDD62740C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSiteAPI.Tests", "VotingSiteAPI.Tests\VotingSiteAPI.Tests.csproj", "{4BD243DC-5F78-40D2-98C3-13FCDB3B5092}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSiteAPI.Data", "VotingSiteAPI.Data\VotingSiteAPI.Data.csproj", "{908BF03E-C3E1-4333-8F96-967D6E482AE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSiteAPI.Domain", "VotingSiteAPI.Domain\VotingSiteAPI.Domain.csproj", "{F9056361-4D73-4B59-9DB6-6D070C8CDE4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSiteAPI.Services", "VotingSiteAPI.Services\VotingSiteAPI.Services.csproj", "{B0CBA1EB-EA0A-4959-9CB4-8D8573C51814}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2F631266-38F0-4421-A5C4-FF3288CA0571}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6658C4CA-6D1E-41C2-87A6-50625A1D2623}"
+	ProjectSection(SolutionItems) = preProject
+		.tfignore = .tfignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLScripts", "SQLScripts", "{A48BDB1D-0E93-46E1-AF94-10A9EB2790A2}"
+	ProjectSection(SolutionItems) = preProject
+		SQLScripts\db creation script.sql = SQLScripts\db creation script.sql
+		SQLScripts\test data insertion script.sql = SQLScripts\test data insertion script.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSiteAPI.Logging", "VotingSiteAPI.Logging\VotingSiteAPI.Logging.csproj", "{D520506C-3A41-4023-A371-650E9DBD98F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSiteAPI.FunctionalTests", "VotingSiteAPI.FunctionalTests\VotingSiteAPI.FunctionalTests.csproj", "{972CBF87-3838-44B7-96A7-46CD76D6D6CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSiteAPI.TestHarnessConApp01", "VotingSiteAPI.TestHarnessConApp01\VotingSiteAPI.TestHarnessConApp01.csproj", "{9EC26B93-6F69-4584-BE9A-3CCC81D27D74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSiteAPI.SharedModels", "VotingSiteAPI.SharedModels\VotingSiteAPI.SharedModels.csproj", "{10642425-B63D-4DC4-AA7C-74BCA3825A27}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A86527A-D587-4EC0-93F9-0FDDD62740C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A86527A-D587-4EC0-93F9-0FDDD62740C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A86527A-D587-4EC0-93F9-0FDDD62740C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A86527A-D587-4EC0-93F9-0FDDD62740C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BD243DC-5F78-40D2-98C3-13FCDB3B5092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BD243DC-5F78-40D2-98C3-13FCDB3B5092}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BD243DC-5F78-40D2-98C3-13FCDB3B5092}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BD243DC-5F78-40D2-98C3-13FCDB3B5092}.Release|Any CPU.Build.0 = Release|Any CPU
+		{908BF03E-C3E1-4333-8F96-967D6E482AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{908BF03E-C3E1-4333-8F96-967D6E482AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{908BF03E-C3E1-4333-8F96-967D6E482AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{908BF03E-C3E1-4333-8F96-967D6E482AE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9056361-4D73-4B59-9DB6-6D070C8CDE4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9056361-4D73-4B59-9DB6-6D070C8CDE4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9056361-4D73-4B59-9DB6-6D070C8CDE4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9056361-4D73-4B59-9DB6-6D070C8CDE4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0CBA1EB-EA0A-4959-9CB4-8D8573C51814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0CBA1EB-EA0A-4959-9CB4-8D8573C51814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0CBA1EB-EA0A-4959-9CB4-8D8573C51814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0CBA1EB-EA0A-4959-9CB4-8D8573C51814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D520506C-3A41-4023-A371-650E9DBD98F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D520506C-3A41-4023-A371-650E9DBD98F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D520506C-3A41-4023-A371-650E9DBD98F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D520506C-3A41-4023-A371-650E9DBD98F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{972CBF87-3838-44B7-96A7-46CD76D6D6CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{972CBF87-3838-44B7-96A7-46CD76D6D6CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{972CBF87-3838-44B7-96A7-46CD76D6D6CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972CBF87-3838-44B7-96A7-46CD76D6D6CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EC26B93-6F69-4584-BE9A-3CCC81D27D74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EC26B93-6F69-4584-BE9A-3CCC81D27D74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EC26B93-6F69-4584-BE9A-3CCC81D27D74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EC26B93-6F69-4584-BE9A-3CCC81D27D74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10642425-B63D-4DC4-AA7C-74BCA3825A27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10642425-B63D-4DC4-AA7C-74BCA3825A27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10642425-B63D-4DC4-AA7C-74BCA3825A27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10642425-B63D-4DC4-AA7C-74BCA3825A27}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {765DD0E2-CF0E-4BDE-893A-55AF4B7D66C5}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 10
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs2017:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = VotingSiteAPI.Data\\VotingSiteAPI.Data.csproj
+		SccProjectName1 = VotingSiteAPI.Data
+		SccLocalPath1 = VotingSiteAPI.Data
+		SccProjectUniqueName2 = VotingSiteAPI.Domain\\VotingSiteAPI.Domain.csproj
+		SccProjectName2 = VotingSiteAPI.Domain
+		SccLocalPath2 = VotingSiteAPI.Domain
+		SccProjectUniqueName3 = VotingSiteAPI.Services\\VotingSiteAPI.Services.csproj
+		SccProjectName3 = VotingSiteAPI.Services
+		SccLocalPath3 = VotingSiteAPI.Services
+		SccProjectUniqueName4 = VotingSiteAPI.Tests\\VotingSiteAPI.Tests.csproj
+		SccProjectName4 = VotingSiteAPI.Tests
+		SccLocalPath4 = VotingSiteAPI.Tests
+		SccProjectUniqueName5 = VotingSiteAPI\\VotingSiteAPI.csproj
+		SccProjectName5 = VotingSiteAPI
+		SccLocalPath5 = VotingSiteAPI
+		SccProjectUniqueName6 = VotingSiteAPI.Logging\\VotingSiteAPI.Logging.csproj
+		SccProjectName6 = VotingSiteAPI.Logging
+		SccLocalPath6 = VotingSiteAPI.Logging
+		SccProjectUniqueName7 = VotingSiteAPI.FunctionalTests\\VotingSiteAPI.FunctionalTests.csproj
+		SccProjectName7 = VotingSiteAPI.FunctionalTests
+		SccLocalPath7 = VotingSiteAPI.FunctionalTests
+		SccProjectUniqueName8 = VotingSiteAPI.TestHarnessConApp01\\VotingSiteAPI.TestHarnessConApp01.csproj
+		SccProjectName8 = VotingSiteAPI.TestHarnessConApp01
+		SccLocalPath8 = VotingSiteAPI.TestHarnessConApp01
+		SccProjectUniqueName9 = VotingSiteAPI.SharedModels\\VotingSiteAPI.SharedModels.csproj
+		SccProjectName9 = VotingSiteAPI.SharedModels
+		SccLocalPath9 = VotingSiteAPI.SharedModels
+	EndGlobalSection
+EndGlobal

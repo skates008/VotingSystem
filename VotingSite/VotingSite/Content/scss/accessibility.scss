@@ -1,0 +1,389 @@
+@import './hc-theme';
+
+html {
+  &.x-small-text {
+    font-size: 75%;
+  }
+
+  &.small-text {
+    font-size: 87.5%;
+  }
+
+  &.large-text {
+    font-size: 115%;
+  }
+
+  &.x-large-text {
+    font-size: 130%;
+  }
+}
+
+
+// High-contrast styles
+
+.high-contrast {
+  body {
+    background-color: $hc-background-color;
+    border-color: $hc-border-color;
+    color: $hc-color;
+  }
+
+  button {
+    color: $hc-color;
+  }
+
+  .elect-toolbar {
+    border-color: $hc-border-color;
+
+    .toolbar-background {
+      background-color: $hc-background-color;
+    }
+
+    &.bottom {
+      border-color: $hc-border-color;
+
+      @media screen and (min-width: $breakpoint-mobile-lg) {
+        border-color: $hc-border-color;
+      }
+    }
+
+    .elect-actions {
+      border-bottom: 1px solid $hc-border-color;
+    }
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      .elect-actions {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .election-title {
+    color: $hc-color;
+  }
+
+  .elect-action {
+    border-color: $hc-border-color;
+
+    .dropdown-menu {
+      border-color: $hc-border-color;
+
+      .dropdown-item {
+        background-color: $hc-background-color;
+        border-bottom-color: $hc-border-color;
+
+        &:hover {
+          background: $hc-color;
+          border: none;
+          color: $hc-background-color;
+        }
+      }
+    }
+
+    &.show {
+      .action-button {
+        background-color: $hc-background-color;
+        border-color: transparent;
+        color: $hc-color;
+
+        @media screen and (min-width: $breakpoint-mobile-lg) {
+          background-color: $hc-background-color;
+          border-color: $hc-border-color;
+          color: $hc-color;
+        }
+      }
+    }
+  }
+
+  .action-text {
+    color: $hc-color;
+  }
+
+  .action-button {
+    background-color: $hc-background-color;
+    border-color: $hc-border-color;
+    color: $hc-color;
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      border-color: transparent;
+    }
+
+    &.active {
+      background-color: $hc-background-color;
+      border-color: transparent;
+      color: $hc-color;
+
+      @media screen and (min-width: $breakpoint-mobile-lg) {
+        background-color: $hc-background-color;
+        border-color: $hc-border-color;
+        color: $hc-color;
+      }
+    }
+  }
+
+  .elect-action-icon,
+  .elect-action-caret {
+    g,
+    path {
+      fill: $hc-color;
+
+      @media screen and (min-width: $breakpoint-mobile-lg) {
+        fill: $hc-color;
+      }
+    }
+  }
+
+  .active {
+    .action-text {
+      color: $hc-color;
+    }
+
+    .elect-action-icon {
+      g,
+      path {
+        fill: $hc-color;
+      }
+    }
+  }
+
+  .elect-bottom-toolbar-backdrop {
+    background-color: $hc-background-color;
+  }
+
+  .bottom {
+    .action-icon-container {
+      @media screen and (min-width: $breakpoint-mobile-lg) {
+        background-color: $hc-background-color;
+      }
+    }
+
+    .action-button {
+      @media screen and (min-width: $breakpoint-mobile-lg) {
+        background-color: $hc-background-color;
+        border-color: $hc-border-color;
+        color: $hc-color;
+      }
+
+      &.high,
+      &.low {
+        background-color: $hc-background-color;
+        border-color: $hc-border-color;
+
+        .action-text {
+          color: $hc-color;
+        }
+
+        .action-icon-container {
+          background-color: $hc-background-color;
+        }
+
+        .elect-action-icon {
+          g,
+          path {
+            fill: $hc-color;
+          }
+        }
+      }
+    }
+
+    .action-text {
+      color: $hc-color;
+    }
+
+    .elect-action-icon {
+      g,
+      path {
+        fill: $hc-color;
+
+        @media screen and (min-width: $breakpoint-mobile-lg) {
+          fill: $hc-color;
+        }
+      }
+    }
+  }
+}
+
+
+// High-contrast inverted styles
+
+.inverted-contrast {
+  body {
+    background-color: $hc-inverted-background-color;
+    border-color: $hc-inverted-border-color;
+    color: $hc-inverted-color;
+  }
+
+  button {
+    color: $hc-inverted-color;
+  }
+
+  .elect-toolbar {
+    border-color: $hc-inverted-border-color;
+
+    .toolbar-background {
+      background-color: $hc-inverted-background-color;
+    }
+
+    &.bottom {
+      border-color: $hc-inverted-border-color;
+
+      @media screen and (min-width: $breakpoint-mobile-lg) {
+        border-color: $hc-inverted-border-color;
+      }
+    }
+
+    .elect-actions {
+      border-bottom: 1px solid $hc-inverted-border-color;
+    }
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      .elect-actions {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .election-title {
+    color: $hc-inverted-color;
+  }
+
+  .elect-action {
+    border-color: $hc-inverted-border-color;
+
+    .dropdown-menu {
+      border-color: $hc-inverted-border-color;
+
+      .dropdown-item {
+        background-color: $hc-inverted-background-color;
+        border-bottom-color: $hc-inverted-border-color;
+
+        &:hover {
+          background: $hc-inverted-color;
+          border: none;
+          color: $hc-inverted-background-color;
+        }
+      }
+    }
+
+    &.show {
+      .action-button {
+        background-color: $hc-inverted-background-color;
+        border-color: transparent;
+        color: $hc-inverted-color;
+
+        @media screen and (min-width: $breakpoint-mobile-lg) {
+          background-color: $hc-inverted-background-color;
+          border-color: $hc-inverted-border-color;
+          color: $hc-inverted-color;
+        }
+      }
+    }
+  }
+
+  .action-text {
+    color: $hc-inverted-color;
+  }
+
+  .action-button {
+    background-color: $hc-inverted-background-color;
+    border-color: $hc-inverted-border-color;
+    color: $hc-inverted-color;
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      border-color: transparent;
+    }
+
+    &.active {
+      background-color: $hc-inverted-background-color;
+      border-color: transparent;
+      color: $hc-inverted-color;
+
+      @media screen and (min-width: $breakpoint-mobile-lg) {
+        background-color: $hc-inverted-background-color;
+        border-color: $hc-inverted-border-color;
+        color: $hc-inverted-color;
+      }
+    }
+  }
+
+  .elect-action-icon,
+  .elect-action-caret {
+    g,
+    path {
+      fill: $hc-inverted-color;
+
+      @media screen and (min-width: $breakpoint-mobile-lg) {
+        fill: $hc-inverted-color;
+      }
+    }
+  }
+
+  .active {
+    .action-text {
+      color: $hc-inverted-color;
+    }
+
+    .elect-action-icon {
+      g,
+      path {
+        fill: $hc-inverted-color;
+      }
+    }
+  }
+
+  .elect-bottom-toolbar-backdrop {
+    background-color: $hc-inverted-background-color;
+  }
+
+  .bottom {
+    .action-icon-container {
+      @media screen and (min-width: $breakpoint-mobile-lg) {
+        background-color: $hc-inverted-background-color;
+      }
+    }
+
+    .action-button {
+      @media screen and (min-width: $breakpoint-mobile-lg) {
+        background-color: $hc-inverted-background-color;
+        border-color: $hc-inverted-border-color;
+        color: $hc-inverted-color;
+      }
+
+      &.high,
+      &.low {
+        background-color: $hc-inverted-background-color;
+        border-color: $hc-inverted-border-color;
+
+        .action-text {
+          color: $hc-inverted-color;
+        }
+
+        .action-icon-container {
+          background-color: $hc-inverted-background-color;
+        }
+
+        .elect-action-icon {
+          g,
+          path {
+            fill: $hc-inverted-color;
+          }
+        }
+      }
+    }
+
+    .action-text {
+      color: $hc-inverted-color;
+    }
+
+    .elect-action-icon {
+      g,
+      path {
+        fill: $hc-inverted-color;
+
+        @media screen and (min-width: $breakpoint-mobile-lg) {
+          fill: $hc-inverted-color;
+        }
+      }
+    }
+  }
+}

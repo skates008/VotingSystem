@@ -1,0 +1,503 @@
+@import './theme';
+
+$dropdown-shadow: rgba($black, .3);
+
+.elect-toolbar {
+  align-items: center;
+  display: flex;
+  flex: 0 0 $top-toolbar-height;
+  flex-direction: row;
+  height: $top-toolbar-height;
+  justify-content: space-between;
+  order: -10;
+  position: relative;
+  width: 100%;
+
+  @media screen and (min-width: $breakpoint-mobile-lg) {
+    border-bottom: $toolbar-desktop-border-width solid $toolbar-desktop-border-color;
+    flex: 0 0 $top-toolbar-desktop-height;
+    height: $top-toolbar-desktop-height;
+    position: relative;
+  }
+
+  &.bottom {
+    border-bottom-width: 0;
+    border-top: $toolbar-border-width solid $toolbar-border-color;
+    bottom: 0;
+    flex: 0 0 $bottom-toolbar-height;
+    height: $bottom-toolbar-height;
+    order: 10;
+    z-index: 10;
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      border-color: transparent;
+      flex: 0 0 $bottom-toolbar-desktop-height;
+      height: $bottom-toolbar-desktop-height;
+    }
+
+    .toolbar-background {
+      bottom: 0;
+      height: $bottom-toolbar-height;
+      top: auto;
+    }
+  }
+
+  .toolbar-background {
+    background-color: $toolbar-background-color;
+    border-width: 0;
+    height: $top-toolbar-height;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      display: none;
+    }
+  }
+
+  .toolbar-content {
+    align-items: center;
+    display: flex;
+    flex: 0 0 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.elect-bottom-toolbar-backdrop {
+  background-color: $toolbar-backdrop-background-color;
+  bottom: 0;
+  height: $bottom-toolbar-height;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+
+  @media screen and (min-width: $breakpoint-mobile-lg) {
+    background-color: $toolbar-backdrop-desktop-background-color;
+    height: $bottom-toolbar-desktop-height;
+  }
+}
+
+.election-info {
+  align-items: center;
+  display: none;
+  flex: 1;
+  height: 100%;
+  padding: 5px 15px;
+
+  @media screen and (min-width: $breakpoint-mobile-lg) {
+    display: flex;
+  }
+}
+
+.election-logo {
+  margin-right: 30px;
+  max-height: calc(100% - 14px);
+  max-width: calc(50% - 30px);
+}
+
+.election-title {
+  color: $toolbar-title-color;
+  flex: 1 1 50%;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.elect-actions {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  height: 100%;
+
+  @media screen and (min-width: $breakpoint-mobile-lg) {
+    align-self: flex-end;
+    flex: 0 0 auto;
+    height: $toolbar-desktop-action-height;
+  }
+}
+
+.elect-action {
+  align-items: flex-start;
+  border-right: 1px solid $toolbar-color;
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+
+  .dropdown-menu {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top: 1px solid $toolbar-dropdown-border-color;
+    box-shadow: 0 .5rem 1rem $dropdown-shadow;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 100%;
+    width: 100vw;
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      border: 2px solid $toolbar-dropdown-border-color;
+      border-top-width: 3px;
+      width: 100%;
+    }
+  }
+
+  .dropdown-item {
+    background: $toolbar-dropdown-background-color;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: block;
+    margin: 0;
+    padding: 15px 10px;
+    text-align: left;
+    width: 100%;
+
+    &:hover {
+      background: $toolbar-dropdown-hover-background-color;
+      border-bottom-color: $toolbar-dropdown-hover-border-color;
+      border-top-color: $toolbar-dropdown-hover-border-color;
+      font-weight: bold;
+
+      &:first-child {
+        border-top-color: transparent;
+      }
+
+      &:last-child {
+        border-bottom-color: transparent;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:last-child {
+      border-bottom: none;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      padding: 10px;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-mobile-lg) {
+    border-right-width: 0;
+    flex: 1 1 auto;
+    margin: 0 5px;
+  }
+
+  &:last-child {
+    border-right-width: 0;
+  }
+
+  &:only-child {
+    width: 100%;
+  }
+
+  &.show {
+    .action-button {
+      background-color: $toolbar-active-background-color;
+      border-color: $toolbar-active-background-color;
+      color: $toolbar-active-color;
+
+      @media screen and (min-width: $breakpoint-mobile-lg) {
+        background-color: $toolbar-desktop-active-background-color;
+        border-color: $toolbar-desktop-active-background-color;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        color: $toolbar-desktop-active-color;
+      }
+    }
+
+    .dropdown-menu {
+      display: block;
+    }
+  }
+}
+
+.action-button {
+  align-items: center;
+  background-color: transparent;
+  border-bottom: $toolbar-border-width solid $toolbar-border-color;
+  border-width: 0;
+  color: $toolbar-color;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  margin: 0;
+  padding-top: 5px;
+  text-decoration: none;
+  width: 100%;
+
+  @media screen and (min-width: $breakpoint-mobile-lg) {
+    border: 2px solid transparent;
+    border-bottom-width: 0;
+    color: $toolbar-desktop-color;
+    flex-direction: row;
+    padding: 0 12px;
+  }
+
+  &[disabled] {
+    color: $toolbar-disabled-color;
+    cursor: default;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.active {
+    background-color: $toolbar-active-background-color;
+    border-color: $toolbar-active-background-color;
+    color: $toolbar-active-color;
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      background-color: $toolbar-desktop-active-background-color;
+      border-color: $toolbar-desktop-active-background-color;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      color: $toolbar-desktop-active-color;
+    }
+  }
+
+  .elect-action-caret {
+    display: none;
+    fill: $toolbar-color;
+    height: 17px;
+    width: 17px;
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      display: block;
+      fill: $toolbar-desktop-color;
+      margin-left: 5px;
+    }
+  }
+}
+
+.action-text {
+  flex: 0 0 auto;
+  font-size: .8rem;
+  text-align: center;
+  text-transform: none;
+
+  @media screen and (min-width: $breakpoint-mobile-lg) {
+    flex: 1 1 auto;
+    font-size: .9rem;
+    font-weight: bold;
+  }
+}
+
+.bottom {
+  .elect-action {
+    justify-content: center;
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      padding-left: 35px;
+      padding-right: 5px;
+
+    }
+
+    &:last-child {
+      align-items: flex-end;
+      @media screen and (min-width: $breakpoint-mobile-lg) {
+        padding-left: 5px;
+        padding-right: 35px;
+      }
+    }
+
+    &:only-child {
+      align-items: center;
+
+      @media screen and (min-width: $breakpoint-mobile-lg) {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      .action-button {
+        flex-direction: row;
+        @media screen and (min-width: $breakpoint-mobile-lg) {
+          max-width: $breakpoint-mobile-lg;
+          width: 75%;
+        }
+      }
+
+      .action-text {
+        font-size: 1.1rem;
+        width: 100%;
+      }
+    }
+  }
+
+  .action-button {
+    border-bottom-width: 0;
+    float: left;
+    height: 100%;
+    padding-top: 0;
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      background-color: $toolbar-bottom-button-desktop-background-color;
+      border: 3px solid $toolbar-backdrop-desktop-background-color;
+      border-radius: 22px;
+      height: 44px;
+      min-width: calc((#{$breakpoint-mobile-lg} - #{$summary-sidebar-width} - 50px) / 2);
+      padding: 3px;
+      width: auto;
+    }
+
+    &[disabled] {
+      background-color: $toolbar-disabled-background-color;
+
+      .action-text {
+        @media screen and (min-width: $breakpoint-mobile-lg) {
+          color: $toolbar-disabled-color;
+        }
+      }
+    }
+
+    &.high {
+      background-color: $toolbar-bottom-button-high-background-color;
+
+      @media screen and (min-width: $breakpoint-mobile-lg) {
+        background-color: $toolbar-bottom-button-high-desktop-background-color;
+        border-color: $toolbar-bottom-button-high-desktop-border-color;
+      }
+
+      .action-icon-container {
+        @media screen and (min-width: $breakpoint-mobile-lg) {
+          background-color: $toolbar-bottom-icon-high-desktop-background-color;
+        }
+      }
+
+      .elect-action-icon {
+        @media screen and (min-width: $breakpoint-mobile-lg) {
+          fill: $toolbar-bottom-icon-high-desktop-color;
+        }
+      }
+
+      .action-text {
+        @media screen and (min-width: $breakpoint-mobile-lg) {
+          color: $toolbar-bottom-text-high-desktop-color;
+        }
+      }
+    }
+
+    &.low {
+      @media screen and (min-width: $breakpoint-mobile-lg) {
+        background-color: $toolbar-bottom-button-low-desktop-background-color;
+      }
+
+      .action-icon-container {
+        @media screen and (min-width: $breakpoint-mobile-lg) {
+          background-color: $toolbar-bottom-icon-low-desktop-background-color;
+        }
+      }
+
+      .elect-action-icon {
+        @media screen and (min-width: $breakpoint-mobile-lg) {
+          fill: $toolbar-bottom-icon-low-desktop-color;
+        }
+      }
+
+      .action-text {
+        @media screen and (min-width: $breakpoint-mobile-lg) {
+          color: $toolbar-bottom-text-low-desktop-color;
+        }
+      }
+    }
+  }
+
+  .action-text {
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      color: $toolbar-bottom-text-desktop-color;
+      margin: 0 5px;
+    }
+  }
+
+  .action-icon-container {
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      align-items: center;
+      background-color: $toolbar-bottom-icon-desktop-background-color;
+      border-radius: 16px;
+      display: flex;
+      height: 32px;
+      justify-content: center;
+      width: 32px;
+    }
+  }
+
+  .elect-action-icon {
+    flex: 0 0 30px;
+    height: 30px;
+    margin-bottom: 5px;
+    width: 30px;
+
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      fill: $toolbar-bottom-icon-desktop-color;
+      flex: 0 0 20px;
+      height: 20px;
+      margin: 0;
+      width: 20px;
+    }
+  }
+}
+
+.elect-action-icon {
+  fill: $toolbar-color;
+  height: 23px;
+  margin-bottom: 2px;
+  width: 23px;
+
+  @media screen and (min-width: $breakpoint-mobile-lg) {
+    fill: $toolbar-desktop-color;
+    margin-right: 5px;
+  }
+}
+
+.active,
+.show {
+  .elect-action-icon {
+    fill: $toolbar-active-color;
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      fill: $toolbar-desktop-active-color;
+    }
+  }
+
+  .elect-action-caret {
+    fill: $toolbar-active-color;
+    transform: rotate(180deg);
+
+    @media screen and (min-width: $breakpoint-mobile-lg) {
+      fill: $toolbar-desktop-active-color;
+    }
+  }
+}
+
+// NOTE EVS-9674 Added explicit height because Safari is not properly calculating
+// percentage heights of flex items. Should be fixed in Safari 11
+.view-container {
+  display: flex;
+  flex: 1 1 100%;
+  flex-direction: column;
+  height: calc(100% - #{$top-toolbar-height});
+  max-height: calc(100% - #{$top-toolbar-height});
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  @media screen and (min-width: $breakpoint-mobile-lg) {
+    height: calc(100% - #{$top-toolbar-desktop-height});
+    max-height: calc(100% - #{$top-toolbar-desktop-height});
+  }
+}

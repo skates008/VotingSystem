@@ -1,0 +1,174 @@
+/*******************************************************************************
+ * eLect MODERN UX STYLE GUIDE
+ ******************************************************************************/
+
+/*
+
+  This is the css/scss-ified version of the UX style guide found
+  at http://ux.e1c.net/guides/ui. It also includes common files,
+  like fonts and SVGs.
+
+  If using Atom, the pigments package is highly recommended:
+  https://github.com/abe33/atom-pigments
+
+*/
+
+/*******************************************************************************
+ * DEPENDENCIES
+ ******************************************************************************/
+
+/**
+ * Import any dependencies here. To use flexboxgrid, run
+ * `npm i sass-flexboxgrid --save` in your project folder.
+ **/
+
+// @import '~sass-flexboxgrid';
+@import './ec_variables';     // ec == Escrow Code..
+@import './loading';
+@import './theme';
+
+/*******************************************************************************
+ * FONTS
+ ******************************************************************************/
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: url( $default-fonts-path + 'Roboto-Thin.woff2' ) format('woff2')
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 100;
+  src: url( $default-fonts-path + 'Roboto-ThinItalic.woff2' ) format('woff2')
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url( $default-fonts-path + 'Roboto-Light.woff2' ) format('woff2')
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 300;
+  src: url( $default-fonts-path + 'Roboto-LightItalic.woff2' ) format('woff2')
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url( $default-fonts-path + 'Roboto-Regular.woff2' ) format('woff2')
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 400;
+  src: url( $default-fonts-path + 'Roboto-Italic.woff2' ) format('woff2')
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url( $default-fonts-path + 'Roboto-Medium.woff2' ) format('woff2')
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 500;
+  src: url( $default-fonts-path + 'Roboto-MediumItalic.woff2' ) format('woff2')
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url( $default-fonts-path + 'Roboto-Bold.woff2') format('woff2')
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 700;
+  src: url( $default-fonts-path + 'Roboto-BoldItalic.woff2') format('woff2')
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  src: url( $default-fonts-path + 'Roboto-Black.woff2') format('woff2')
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 900;
+  src: url( $default-fonts-path + 'Roboto-BlackItalic.woff2') format('woff2')
+}
+
+/*******************************************************************************
+ * DEFAULT STYLES
+ ******************************************************************************/
+
+body {
+  background-color: $app-background-color;
+  font-family: $default-font-family;
+  font-size: $default-font-size;
+  margin: 0;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+}
+
+body, h1, h2, h3, h4, h5, h6, button, input {
+  font-size-adjust: $default-font-size-adjust;
+  letter-spacing: $default-letter-spacing;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  box-sizing: border-box;
+}
+
+svg {
+  &:not(:root) {
+    overflow: hidden;
+  }
+}
+
+form,
+input,
+optgroup,
+select {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+button {
+  font-size: $default-font-size;
+  font-family: $default-font-family;
+}
+
+.no-select {
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+[tabindex="-1"]:focus {
+  outline: none !important;
+}
+
+.top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 43px;
+}

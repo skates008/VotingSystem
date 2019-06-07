@@ -1,0 +1,120 @@
+﻿@model VotingSite.UiDependentModels.LandingPgViewModel
+
+@using VotingSite.UiDependentModels
+
+@{
+    var viewModel = @Model;     //(LandingPgViewModel)ViewBag.LandingPgViewModel;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - TEST TITLE OF PAGE HERE.</title>
+
+    @Styles.Render("~/Content/landAndVote") @* replaces the "/Content/css" bundle *@
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+<div class="lav-page-container" id="landAndVoteWrapper">
+
+    <div class="elect-toolbar top">
+        <div class="toolbar-background"></div>
+        <div class="toolbar-content">
+            <div class="election-info">
+                <div class="election-title">@viewModel.ElectionName</div>
+            </div>
+            <div class="elect-actions">
+                <div class="elect-action">
+                    <a class="action-button">
+                        <img src="~/Content/icons/action/settings.svg" class="elect-action-icon" alt="Gear Icon" />
+                        <span class="action-text">Settings</span>
+                    </a>
+                </div>
+                <div class="elect-action">
+                    <a class="action-button">
+                        <img src="~/Content/icons/action/help-solid.svg" class="elect-action-icon" alt="Question mark icon" />
+                        <span class="action-text">Help</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="lav-under-toolbar-container">
+
+        @* Sidebar -- contest-summary.component.html *@
+        <div class="lav-sidebar-container sidebar">
+
+            <div class="sidebar-header-container no-select">
+                <div class="sidebar-title-text">
+                    My Ballot
+                </div>
+                <div class="sidebar-progress">
+                    @*<div class="contest-summary-selected">*@
+                    @viewModel.BallotData.Contests.Count(x => x.VotesCast >= 1) / @viewModel.BallotData.TotalContests Completed
+                </div>
+
+                <div class="sidebar-message-text">
+                    To vote on a position or change a selection, select a position's title below.
+                </div>
+            </div>
+
+            <div class="scroll-content">
+                <div class="summary-contests">
+                    <div class="contest-summary-text no-select">
+                        @foreach (var contest in @Model.BallotData.Contests.OrderBy(ob => ob.SortOrder))
+                        {
+                            <!-- was: class="list-group-item list-group-item-action bg-light" -->
+                                @*<a id="@contest.HtmlContestId" href="#" class="list-group-item list-group-item-action bg-light">@contest.Title</a>*@
+                            <a id="@contest.HtmlContestId" href="#" class="contest-summary-title">
+                                @contest.Title
+                                <span class="contest-limit">
+                                    @contest.VotesCast / @contest.MaxVotes
+                                </span>
+                            </a>
+                        }
+                    </div>
+                </div>
+                @* end of sidebar *@
+            </div>
+
+            <div class="column-filler"></div>
+
+            <div class="elect-toolbar bottom">
+                <div class="toolbar-background"></div>
+                <div class="toolbar-content">
+                    <div class="elect-action">
+                        @* [routerLink]="['/ballot', 'review']" *@
+                        <a class="action-button" href="@Url.Action("Index", "ReviewBallot")">
+                            <span class="action-text">REVIEW MY BALLOT</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="elect-bottom-toolbar-backdrop"></div>   @* this is good here, leave it! *@
+
+        <div class="ballot-contest" id="renderBodyWrapper">
+            @RenderBody()
+        </div>
+
+    </div>
+</div>
+
+
+    @*<div class="ballot-contest" id="renderBodyWrapper">
+        @RenderBody()
+    </div>*@
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

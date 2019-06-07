@@ -1,0 +1,10 @@
+@import './ec_variables';
+
+// High-contrast (+ inverted) colors
+
+$hc-background-color: $white;
+$hc-color: $black;
+$hc-border-color: $hc-color;
+$hc-inverted-background-color: $hc-color;
+$hc-inverted-color: $hc-background-color;
+$hc-inverted-border-color: $hc-inverted-color;

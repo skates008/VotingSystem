@@ -1,0 +1,62 @@
+//*******************************************************************************
+//* PATHS
+//******************************************************************************/
+
+$default-fonts-path: '../webfonts/';
+
+//*******************************************************************************
+//* SIZES
+//******************************************************************************/
+
+$summary-sidebar-width: 325px;
+$dialog-min-height: 500px;
+
+//*******************************************************************************
+//* BREAKPOINTS
+//******************************************************************************/
+
+$breakpoint-mobile-lg: 825px;
+
+//*******************************************************************************
+//* TYPOGRAPHY
+//******************************************************************************/
+
+$default-font-family: 'Roboto', 'Noto', sans-serif;
+$default-font-size: 1rem;
+$default-font-size-adjust: .5;
+$default-letter-spacing: .09375rem;
+
+//*******************************************************************************
+//* COLORS
+//******************************************************************************/
+
+// Primary colors
+$primary-medium: rgb(0, 78, 122);       // #004e7a
+
+// Theme colors
+$darkest-grey: rgb(74, 74, 74);         // #4a4a4a
+$darker-grey: rgb(115, 115, 115);       // #757575
+$grey: rgb(160, 161, 165);              // #A0A1A5
+$light-grey: rgb(195, 195, 195);        // #c3c3c3
+$lighter-grey: rgb(216, 216, 216);      // #d8d8d8
+$lightest-grey: rgb(243, 243, 243);     // #f3f3f3
+$white: rgb(255, 255, 255);             // #ffffff
+$black: rgb(0, 0, 0);                   // #000000
+
+$success-color: rgb(51, 100, 8);        // #336408
+$error-color: rgb(169, 0, 6);           // #A90006
+$attention-color: rgb(240, 149, 28);    // #F0951C
+
+$overlay-grey: rgba(77, 77, 77, .9);
+
+// Toolbar dimensions
+
+$toolbar-border-width: 1px;
+$toolbar-desktop-border-width: 3px;
+
+$toolbar-desktop-action-height: 43px;
+
+$top-toolbar-height: 50px;
+$top-toolbar-desktop-height: 90px;
+$bottom-toolbar-height: 65px;
+$bottom-toolbar-desktop-height: 60px;

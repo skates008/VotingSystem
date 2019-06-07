@@ -1,0 +1,87 @@
+﻿@model VotingSite.UiDependentModels.LoginViewModel
+
+@{
+    ViewBag.Title = "Home/Login Page";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+@* this whole page is wrapped in a <div class="loginPageWrapper"> *@
+
+@* @class = "auth-form", *@
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new
+{
+    role = "form",
+    @id = "loginForm"
+}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @*<input type="hidden" id="" name="" value="" />*@
+    <input type="hidden" id="ElectionId" name="ElectionId" value="@Model.ElectionId" />
+    <input type="hidden" id="ElectionName" name="ElectionName" value="@Model.ElectionName" />
+    <input type="hidden" id="LandingPageTitle" name="LandingPageTitle" value="@Model.LandingPageTitle" />
+    <input type="hidden" id="LandingPageMessage" name="LandingPageMessage" value="@Model.LandingPageMessage" />
+    <input type="hidden" id="UserIp" name="UserIp" value="@Model.UserIp" />
+    <input type="hidden" id="BrowserAgent" name="BrowserAgent" value="@Model.BrowserAgent" />
+    @*<input type="hidden" id="VotingIsOpen" name="VotingIsOpen" value="@Model.VotingIsOpen" />*@
+    <input type="hidden" id="VoterName" name="VoterName" value="@Model.VoterName" />
+    <input type="hidden" id="VoteCompleted" name="VoteCompleted" value="@Model.VoteCompleted" />
+    <input type="hidden" id="OpenDate" name="OpenDate" value="@Model.OpenDate" />
+    <input type="hidden" id="CloseDate" name="CloseDate" value="@Model.CloseDate" />
+    @*<input type="hidden" id="LoginScreenOpenMessage" name="LoginScreenOpenMessage" value="@Model.LoginScreenOpenMessage" />*@
+    @*<input type="hidden" id="LoginScreenCloseMessage" name="LoginScreenCloseMessage" value="@Model.LoginScreenCloseMessage" />*@
+    <input type="hidden" id="LoginIdLabelTxt" name="LoginIdLabelTxt" value="@Model.LoginIdLabelTxt" />
+    <input type="hidden" id="LoginPinLabelTxt" name="LoginPinLabelTxt" value="@Model.LoginPinLabelTxt" />
+
+    <div>
+        <p>
+            @if (Model.VotingIsOpen)
+            {
+                @Html.Raw(@Model.LoginScreenOpenMessage)
+            }
+            else
+            {
+                @Model.LoginScreenCloseMessage
+            }
+        </p>
+    </div>
+
+    if (Model.VotingIsOpen)
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.LoginId, @Model.LoginIdLabelTxt, htmlAttributes: new { @class = "col-md-6" })
+            <div class="col-md-12">
+                @Html.PasswordFor(model => model.LoginId, new { @class = "form-control", style = "width: 90%", autofocus = "autofocus" })
+                @Html.ValidationMessageFor(model => model.LoginId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LoginPin, @Model.LoginPinLabelTxt, htmlAttributes: new { @class = "col-md-6" })
+            <div class="col-md-12">
+                @Html.PasswordFor(model => model.LoginPin, new { @class = "form-control", style = "width: 90%" })
+                @Html.ValidationMessageFor(model => model.LoginPin, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="elect-toolbar bottom">
+            <div class="toolbar-background"></div>
+            <div class="toolbar-content">
+                <div class="elect-action">
+                    @* clicking on this anchor is handled in the .js. *@
+                    <a id="loginSubmit" class="action-button" href="#"><span class="action-text">LOG IN</span></a>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @*<script src="~/Scripts/jquery.mask.min.js"></script>*@
+
+    <script src="~/Scripts/site/Home_Index.js"></script>
+}

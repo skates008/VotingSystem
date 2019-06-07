@@ -1,0 +1,208 @@
+@import './ec_variables';
+
+// App Colors
+
+$app-background-color: $white;
+
+// Toolbar Colors
+
+$toolbar-background-color: $primary-medium;
+$toolbar-desktop-background-color: $white;
+
+$toolbar-color: $white;
+$toolbar-desktop-color: $primary-medium;
+$toolbar-disabled-color: $grey;
+$toolbar-disabled-background-color: $white;
+
+$toolbar-title-color: $primary-medium;
+
+$toolbar-border-color: $white;
+$toolbar-desktop-border-color: $primary-medium;
+
+$toolbar-active-background-color: $white;
+$toolbar-active-color: $primary-medium;
+$toolbar-desktop-active-background-color: $primary-medium;
+$toolbar-desktop-active-color: $white;
+
+$toolbar-backdrop-background-color: $primary-medium;
+$toolbar-backdrop-desktop-background-color: $grey;
+
+$toolbar-dropdown-border-color: $primary-medium;
+$toolbar-dropdown-hover-border-color: $darker-grey;
+$toolbar-dropdown-background-color: $white;
+$toolbar-dropdown-hover-background-color: $lightest-grey;
+
+$toolbar-bottom-button-desktop-background-color: $white;
+$toolbar-bottom-text-desktop-color: $black;
+$toolbar-bottom-icon-desktop-background-color: $primary-medium;
+$toolbar-bottom-icon-desktop-color: $white;
+
+$toolbar-bottom-button-high-background-color: $success-color;
+
+$toolbar-bottom-button-high-desktop-background-color: $primary-medium;
+$toolbar-bottom-button-high-desktop-border-color: $white;
+$toolbar-bottom-text-high-desktop-color: $white;
+$toolbar-bottom-icon-high-desktop-background-color: $white;
+$toolbar-bottom-icon-high-desktop-color: $primary-medium;
+
+$toolbar-bottom-button-low-desktop-background-color: $lighter-grey;
+$toolbar-bottom-text-low-desktop-color: $darkest-grey;
+$toolbar-bottom-icon-low-desktop-background-color: $darker-grey;
+$toolbar-bottom-icon-low-desktop-color: $white;
+
+
+// Basic Auth Colors
+
+$auth-title-color: $primary-medium;
+
+$auth-resume-border-color: $light-grey;
+
+$auth-header-background-color: $white;
+$auth-input-icon-color: $darkest-grey;
+$auth-input-border-color: $black;
+$auth-input-focus-border-color: $black;
+
+$auth-dob-background-color: $white;
+$auth-dob-slash-color: $light-grey;
+
+$auth-background-color: $lightest-grey;
+
+$auth-button-desktop-background-color: $primary-medium;
+$auth-button-desktop-color: $white;
+
+$auth-button-disabled-background-color: $white;
+$auth-button-disabled-color: $primary-medium;
+
+$auth-not-open-color: $primary-medium;
+
+
+// Warning Colors
+
+$warning-color: $white;
+$warning-background-color: $error-color;
+
+$inline-warning-color: $white;
+$inline-warning-background-color: $error-color;
+
+
+// General Ballot Colors
+
+$ballot-header-color: $primary-medium;
+$ballot-header-background-color: $white;
+$ballot-header-border-color: $grey;
+
+$ballot-content-background-color: $white;
+
+
+// Summary Colors
+
+$summary-background-color: $lighter-grey;
+$summary-border-color: $light-grey;
+
+$summary-header-color: $black;
+$summary-header-border-color: $darker-grey;
+
+$summary-review-background-color: $grey;
+$summary-review-color: $white;
+
+$contest-summary-color: $black;
+$contest-summary-border-color: $darkest-grey;
+$contest-summary-selected-color: $darker-grey;
+$contest-summary-active-background-color: $white;
+$contest-summary-done-background-color: $lightest-grey;
+
+$summary-blackout-background-color: $lighter-grey;
+
+// Review Colors
+
+$review-button-color: $white;
+$review-button-border-color: $white;
+$review-button-background-color: $success-color;
+
+$contest-review-border-color: $darkest-grey;
+$contest-review-selected-color: $darker-grey;
+
+$contest-review-choice-border-color: $darkest-grey;
+
+$contest-review-change-color: $black;
+$contest-review-change-background-color: $attention-color;
+
+
+// Contest Colors
+
+$contest-choice-selected-background-color: $lightest-grey;
+
+$contest-choice-border-color: $darker-grey;
+$contest-choice-outline-color: $grey;
+
+$contest-choice-link-color: $darker-grey;
+
+$contest-choice-disabled-color: $black;
+$contest-choice-icon-color: $primary-medium;
+$contest-writein-input-border-color: $grey;
+$contest-choice-rank-color: $primary-medium;
+
+$contest-ranked-button-color: $black;
+$contest-ranked-button-background-color: $attention-color;
+
+
+// Settings Colors
+
+$settings-header-color: $primary-medium;
+$settings-header-background-color: $white;
+$settings-header-border-color: $grey;
+
+$settings-content-background-color: $white;
+
+$settings-back-color: $primary-medium;
+
+$settings-reset-color: $black;
+$settings-reset-background-color: $attention-color;
+
+$settings-text-size-line-color: $darker-grey;
+$settings-text-size-button-color: $primary-medium;
+$settings-text-size-button-background-color: $white;
+
+$settings-example-text-border-color: $black;
+
+$settings-link-color: $primary-medium;
+$settings-link-border-color: $grey;
+
+$settings-blackout-button-background-color: $white;
+$settings-blackout-button-color: $primary-medium;
+
+$settings-blackout-button-active-background-color: $black;
+$settings-blackout-button-active-color: $white;
+
+$settings-contrast-button-color: $primary-medium;
+$settings-contrast-button-border-color: $darker-grey;
+$settings-contrast-button-background-color: $white;
+
+$settings-contrast-bow-button-color: $black;
+$settings-contrast-bow-button-background-color: $white;
+
+$settings-contrast-wob-button-color: $white;
+$settings-contrast-wob-button-background-color: $black;
+
+// Blackout colors
+
+$blackout-background-color: $white;
+$blackout-color: $black;
+
+// Dialog colors
+
+$dialog-background-color: $white;
+$dialog-color: $black;
+$dialog-accent-color: $primary-medium;
+$dialog-backdrop-background-color: $overlay-grey;
+
+$dialog-warning-color: $attention-color;
+$dialog-error-color: $error-color;
+
+// Help colors
+
+$help-header-color: $primary-medium;
+$help-header-background-color: $white;
+$help-header-border-color: $grey;
+
+$help-content-background-color: $white;

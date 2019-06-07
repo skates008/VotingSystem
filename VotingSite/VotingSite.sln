@@ -1,0 +1,89 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSite", "VotingSite\VotingSite.csproj", "{9AF40E10-CF5E-4618-86F3-0535CB29D032}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSite.Tests", "VotingSite.Tests\VotingSite.Tests.csproj", "{E35988A8-9C8A-4B0F-91E9-FE65E93A2B5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8FBE66B1-AD4B-4ACB-8E59-55BC02733216}"
+	ProjectSection(SolutionItems) = preProject
+		.tfignore = .tfignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E19D257C-4BD9-4F1F-9B94-C0A9DBD3367C}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSite.Domain", "VotingSite.Domain\VotingSite.Domain.csproj", "{850AAE7A-D149-44C3-86D3-B55105AFEDC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSite.DAL", "VotingSite.DAL\VotingSite.DAL.csproj", "{C7155480-38D1-4A38-A80E-28FD35763520}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSite.Services", "VotingSite.Services\VotingSite.Services.csproj", "{82A76A80-DF63-4B4C-8971-EF4A17F4F73A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotingSite.DataAccessServices", "VotingSite.DataAccessServices\VotingSite.DataAccessServices.csproj", "{15B29089-7C86-47B7-B59F-A102A993C966}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9AF40E10-CF5E-4618-86F3-0535CB29D032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AF40E10-CF5E-4618-86F3-0535CB29D032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AF40E10-CF5E-4618-86F3-0535CB29D032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AF40E10-CF5E-4618-86F3-0535CB29D032}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E35988A8-9C8A-4B0F-91E9-FE65E93A2B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E35988A8-9C8A-4B0F-91E9-FE65E93A2B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E35988A8-9C8A-4B0F-91E9-FE65E93A2B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E35988A8-9C8A-4B0F-91E9-FE65E93A2B5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{850AAE7A-D149-44C3-86D3-B55105AFEDC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{850AAE7A-D149-44C3-86D3-B55105AFEDC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{850AAE7A-D149-44C3-86D3-B55105AFEDC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{850AAE7A-D149-44C3-86D3-B55105AFEDC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7155480-38D1-4A38-A80E-28FD35763520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7155480-38D1-4A38-A80E-28FD35763520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7155480-38D1-4A38-A80E-28FD35763520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7155480-38D1-4A38-A80E-28FD35763520}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82A76A80-DF63-4B4C-8971-EF4A17F4F73A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82A76A80-DF63-4B4C-8971-EF4A17F4F73A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82A76A80-DF63-4B4C-8971-EF4A17F4F73A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82A76A80-DF63-4B4C-8971-EF4A17F4F73A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15B29089-7C86-47B7-B59F-A102A993C966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B29089-7C86-47B7-B59F-A102A993C966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B29089-7C86-47B7-B59F-A102A993C966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B29089-7C86-47B7-B59F-A102A993C966}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CEC7014B-755F-417F-B51E-8EF888CDE8E0}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs2017:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = VotingSite.DAL\\VotingSite.DAL.csproj
+		SccProjectName1 = VotingSite.DAL
+		SccLocalPath1 = VotingSite.DAL
+		SccProjectUniqueName2 = VotingSite.Domain\\VotingSite.Domain.csproj
+		SccProjectName2 = VotingSite.Domain
+		SccLocalPath2 = VotingSite.Domain
+		SccProjectUniqueName3 = VotingSite.Services\\VotingSite.Services.csproj
+		SccProjectName3 = VotingSite.Services
+		SccLocalPath3 = VotingSite.Services
+		SccProjectUniqueName4 = VotingSite.Tests\\VotingSite.Tests.csproj
+		SccProjectName4 = VotingSite.Tests
+		SccLocalPath4 = VotingSite.Tests
+		SccProjectUniqueName5 = VotingSite\\VotingSite.csproj
+		SccProjectName5 = VotingSite
+		SccLocalPath5 = VotingSite
+		SccProjectUniqueName6 = VotingSite.DataAccessServices\\VotingSite.DataAccessServices.csproj
+		SccProjectName6 = VotingSite.DataAccessServices
+		SccLocalPath6 = VotingSite.DataAccessServices
+	EndGlobalSection
+EndGlobal
