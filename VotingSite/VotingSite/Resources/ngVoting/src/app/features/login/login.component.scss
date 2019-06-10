@@ -1,0 +1,30 @@
+.form-group-container,
+.login-screen-message {
+  background-color: #f3f3f3;
+  padding: 35px;
+  margin: 35px;
+}
+
+.form-group {
+  margin-top: 20px;
+}
+
+.form-group label {
+  margin-bottom: 15px;
+}
+
+.form-group input {
+  width: 100%;
+}
+
+.action-button {
+  text-transform: uppercase;
+  width: 50% !important;
+  padding: 25px 0px;
+  line-height: 0px;
+  color: #2870a4;
+  border-color: #2870a4;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
