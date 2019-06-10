@@ -8,7 +8,6 @@ using VotingSiteAPI.Services;
 
 namespace VotingSiteAPI.Controllers
 {
-    [OwinAuthorize]
     [RoutePrefix("api/v1/candidates")]
     public class CandidatesIvrController : ApiController
     {
@@ -29,6 +28,7 @@ namespace VotingSiteAPI.Controllers
         /// </summary>
         /// <param name="contestId">The contest identifier.</param>
         /// <returns></returns>
+        [OwinAuthorize]
         [HttpGet]
         [Route("")] // allows for QueryString OR MVC-style parameters on the Url
         [Route("{contestId}")]

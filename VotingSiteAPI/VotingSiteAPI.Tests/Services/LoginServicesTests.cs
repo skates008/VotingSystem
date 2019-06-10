@@ -55,6 +55,8 @@ namespace VotingSiteAPI.Tests.Services
                     return newElection;
                 });
 
+            var mockVotesRepo = new Mock<IVotesRepository>();
+
             var mockVotersRepo = new Mock<IVotersRepository>();
             Expression<Func<Voter, bool>> testExpression = expr => (expr.LoginId == "22222222");
             mockVotersRepo.Setup(x => x.Get(It.Is<Expression<Func<Voter, bool>>>(
@@ -70,9 +72,13 @@ namespace VotingSiteAPI.Tests.Services
                     return newVoter;
                 });
 
+            var mockLoginAttemptsRepo = new Mock<ILoginAttemptsRepository>();
+
             var loginServices = new LoginServices(
                 mockElectionsRepo.Object,
-                mockVotersRepo.Object);
+                mockVotesRepo.Object,
+                mockVotersRepo.Object,
+                mockLoginAttemptsRepo.Object);
 
             // Act
             var result = loginServices.GetPreLoginElectionData(1);
@@ -156,6 +162,8 @@ namespace VotingSiteAPI.Tests.Services
                     return newElection;
                 });
 
+            var mockVotesRepo = new Mock<IVotesRepository>();
+
             var mockVotersRepo = new Mock<IVotersRepository>();
             //Expression<Func<Voter, bool>> testExpression = expr => (expr.LoginId == "22232222");
             //mockVotersRepo.Setup(x => x.Get(It.Is<Expression<Func<Voter, bool>>>(
@@ -177,9 +185,13 @@ namespace VotingSiteAPI.Tests.Services
                     return voter;
                 });
 
+            var mockLoginAttemptsRepo = new Mock<ILoginAttemptsRepository>();
+
             var loginServices = new LoginServices(
                 mockElectionsRepo.Object,
-                mockVotersRepo.Object);
+                mockVotesRepo.Object,
+                mockVotersRepo.Object,
+                mockLoginAttemptsRepo.Object);
 
             return loginServices.ValidateUserCredentials(ucm);
         }

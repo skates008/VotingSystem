@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Web;
 using System.Web.Http;
 using VotingSiteAPI.CustomAuthFilter;
+using VotingSiteAPI.Data.Enums;
+using VotingSiteAPI.Domain.Models;
 using VotingSiteAPI.Services;
 using VotingSiteAPI.SharedModels;
 
@@ -14,7 +17,6 @@ namespace VotingSiteAPI.Controllers
     /// This controller handles user login, as well as retrieval of the text
     /// that will be displayed on the login page.
     /// </summary>
-    [OwinAuthorize]
     [RoutePrefix("api/v1/login")]
     public class LoginController : ApiController
     {
@@ -27,12 +29,13 @@ namespace VotingSiteAPI.Controllers
         //    _logger = logger;
         //}
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="LoginController"/> class.
+        /// Initializes a new instance of the <see cref="T:VotingSiteAPI.Controllers.LoginController" /> class.
         /// </summary>
         /// <param name="webConfigContainer">The web configuration container.</param>
         /// <param name="loginServices">The login services.</param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="T:System.ArgumentNullException">
         /// webConfigContainer
         /// or
         /// loginServices
@@ -56,6 +59,7 @@ namespace VotingSiteAPI.Controllers
         /// <returns>
         /// An instance of the <see cref="RetrievedPageDataModel"/> class.
         /// </returns>
+        [OwinAuthorize]
         [Route("pageData/{electionId}")]
         [HttpGet]
         public IHttpActionResult GetPageData(int electionId)
@@ -86,6 +90,7 @@ namespace VotingSiteAPI.Controllers
         /// A boolean value indicating whether (true) or not (false) the user 
         /// credentials passed to this method match what's in the database. 
         /// </returns>
+        [OwinAuthorize]
         [Route("")] // in other words, just www.theSite.com/api/v1/login
         [HttpPost]
         public IHttpActionResult UserCredentialsAreValid(
@@ -95,20 +100,6 @@ namespace VotingSiteAPI.Controllers
 
             try
             {
-                //// get header value(s)
-                //var authValues = Request.Headers.Authorization;
-
-                //if (authValues?.Scheme == null || authValues.Parameter == null)
-                //{
-                //    return BadRequest();
-                //}
-
-                //if (!authValues.Scheme.Equals(_webConfigContainer.AuthScheme) ||
-                //    !authValues.Parameter.Equals(_webConfigContainer.ApiKey))
-                //{
-                //    return Unauthorized();
-                //}
-
                 result = _loginServices.ValidateUserCredentials(userCredentials);
             }
             catch (Exception oEx)
@@ -126,47 +117,44 @@ namespace VotingSiteAPI.Controllers
         /// An instance of the <see cref="IvrUserCredentialsInputModel"/>
         /// class, which should be hydrated with the ElectionId, 'PIN' & 'SSN'
         /// </param>
-        /// <remarks>
-        /// Since the Model Binder will auto-convert the parameter values for
-        /// me, I've got them set as int, string, string.
-        /// </remarks>
         /// <returns>
-        /// An integer containing the <c>VoterId</c> of the Voter, if the
-        /// voter specified by the parameters to this method is found.
+        /// An instance of the <see cref="IvrUserLoginResponseModel"/> class
+        /// who's <c>AuthResult</c> property will contain the <c>VoterId</c>
+        /// of the Voter, if the voter specified by the parameter to this
+        /// method is found. Else <c>AuthResult</c>
         /// </returns>
         // ReSharper disable once StringLiteralTypo
+        [OwinAuthorize]
         [Route("ivrverifyuser")]
         [HttpPost]
         public IHttpActionResult VerifyIvrUserCredentials(
             IvrUserCredentialsInputModel ivrUserCredentialsInput)
         {
-            int voterId = 0;
+            // AuthResult will contain... See the values in the
+            // IvrLoginStatusCodes enum.
+            IvrUserLoginResponseModel loginWithLoggingResult = null;
 
-            //result = _loginServices.ValidateUserCredentials(userCredentials);
+            var browserAgent = Request.Headers.UserAgent.ToString();
+            var usersIpAddress = HttpContext.Current.Request.UserHostAddress;
+
             try
             {
-                // TODO: check the number of login attempts first!
+                loginWithLoggingResult = _loginServices.OrchestrateIvrUserLoginAndAttempt(
+                    ivrUserCredentialsInput,
+                    browserAgent,
+                    usersIpAddress);
 
-                // how this should be set in the client
-                //httpClient.DefaultRequestHeaders.Authorization =
-                //    new AuthenticationHeaderValue("Bearer", "Your_token");
-
-                var ucm = new UserCredentialsModel
-                {
-                    UsernameOrId = ivrUserCredentialsInput.PIN,
-                    PasswordOrPin = ivrUserCredentialsInput.SSN,
-                    ElectionId = ivrUserCredentialsInput.ElectionID
-                };
-
-                _loginServices.ValidateUserCredentials(ucm);
-                voterId = ucm.VoterId; 
+                //if (loginWithLoggingResult.AuthResult == (int) IvrLoginStatusCodes.AlreadyVoted)
+                //{ }
             }
             catch (Exception oEx)
             {
+                // TODO: actual logging would go here, at least.
+
                 return InternalServerError(oEx);
             }
 
-            return Ok(voterId);
+            return Ok(loginWithLoggingResult);
         }
     }
 }

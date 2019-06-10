@@ -7,7 +7,6 @@ using VotingSiteAPI.SharedModels;
 
 namespace VotingSiteAPI.Controllers
 {
-    [OwinAuthorize]
     [RoutePrefix("api/v1/votes")]
     public class VotesController : ApiController
     {
@@ -43,6 +42,7 @@ namespace VotingSiteAPI.Controllers
         /// their votes to the database. And, whether or not they've already
         /// voted.
         /// </returns>
+        [OwinAuthorize]
         [Route("record")]
         [HttpPost]
         public IHttpActionResult RecordVotes(
