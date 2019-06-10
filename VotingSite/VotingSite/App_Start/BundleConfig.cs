@@ -20,6 +20,8 @@ namespace VotingSite
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                 "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/Resources/ngVoting").IncludeDirectory("~/Scripts", "*.js", true));
+
             //bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
             //    "~/Scripts/bootstrap.js",
             //    "~/Scripts/fontawesome.js",

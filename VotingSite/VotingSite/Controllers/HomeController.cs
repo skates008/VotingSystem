@@ -64,7 +64,7 @@ namespace VotingSite.Controllers
             loginVm.UserIp = usersIpAddress;
             loginVm.BrowserAgent = usersHost;
 
-            return View(loginVm);
+            return View("Index2", loginVm);
         }
 
         [HttpPost]

@@ -36,6 +36,8 @@
     <input type="hidden" id="LoginIdLabelTxt" name="LoginIdLabelTxt" value="@Model.LoginIdLabelTxt" />
     <input type="hidden" id="LoginPinLabelTxt" name="LoginPinLabelTxt" value="@Model.LoginPinLabelTxt" />
 
+            <base href="/">
+
     <div>
         <p>
             @if (Model.VotingIsOpen)
@@ -73,6 +75,9 @@
                 <div class="elect-action">
                     @* clicking on this anchor is handled in the .js. *@
                     <a id="loginSubmit" class="action-button" href="#"><span class="action-text">LOG IN</span></a>
+                    
+
+
                 </div>
             </div>
         </div>
@@ -85,3 +90,4 @@
 
     <script src="~/Scripts/site/Home_Index.js"></script>
 }
+

@@ -31,7 +31,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -377,6 +377,18 @@
     <Content Include="Content\webfonts\fa-regular-400.ttf" />
     <Content Include="Content\webfonts\fa-regular-400.woff" />
     <Content Include="Content\webfonts\fa-regular-400.woff2" />
+    <Content Include="Resources\ngVoting\dist\favicon.ico" />
+    <Content Include="Resources\ngVoting\dist\index.html" />
+    <Content Include="Resources\ngVoting\dist\inline.bundle.js" />
+    <Content Include="Resources\ngVoting\dist\inline.bundle.js.map" />
+    <Content Include="Resources\ngVoting\dist\main.bundle.js" />
+    <Content Include="Resources\ngVoting\dist\main.bundle.js.map" />
+    <Content Include="Resources\ngVoting\dist\polyfills.bundle.js" />
+    <Content Include="Resources\ngVoting\dist\polyfills.bundle.js.map" />
+    <Content Include="Resources\ngVoting\dist\styles.bundle.js" />
+    <Content Include="Resources\ngVoting\dist\styles.bundle.js.map" />
+    <Content Include="Resources\ngVoting\dist\vendor.bundle.js" />
+    <Content Include="Resources\ngVoting\dist\vendor.bundle.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -474,6 +486,7 @@
     <Content Include="Views\Shared\_LandAndVoteLayout.cshtml" />
     <Content Include="Views\ReviewBallot\Index.cshtml" />
     <Content Include="Views\Voting\Index.cshtml" />
+    <Content Include="Views\Home\Index2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
