@@ -1,0 +1,57 @@
+<div class="container" *ngIf="model!= null">
+
+  <div class="row row-centered pos">
+
+    <div class="col-lg-8 col-xs-12 col-centered">
+      <div class="well">
+        <div *ngIf="model.VotingIsOpen" innerHTML="{{model.LoginScreenOpenMessage}}"></div>
+        <div *ngIf="!model.VotingIsOpen" innerHTML="{{model.LoginScreenCloseMessage}}"></div>
+      </div>
+    </div>
+    <div class="col-lg-8 col-xs-12 col-centered">
+      <div class="well">
+
+        <div *ngIf="model.VotingIsOpen">
+
+
+
+          <form [formGroup]="formGroup" (ngSubmit)="submit()">
+
+
+            <div class="form-group">
+              <label class="col-md-6" for="LoginId">{{model.LoginIdLabelTxt}}</label>
+              <div class="col-md-12">
+                <input autofocus="autofocus" class="form-control" formControlName="LoginId" id="LoginId" name="LoginId" style="width: 90%"
+                  type="password">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-6" for="LoginPin">{{model.LoginPinLabelTxt}}</label>
+              <div class="col-md-12">
+                <input class="form-control" id="LoginPin" name="LoginPin" style="width: 90%" type="password">
+              </div>
+            </div>
+
+            <div class="elect-toolbar bottom">
+              <div class="toolbar-background"></div>
+              <div class="toolbar-content">
+                <div class="elect-action">
+                  <button type="submit" class="action-button">Log in</button>
+                </div>
+              </div>
+            </div>
+
+          </form>
+
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
