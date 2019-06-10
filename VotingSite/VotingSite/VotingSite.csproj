@@ -32,6 +32,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -377,6 +378,9 @@
     <Content Include="Content\webfonts\fa-regular-400.ttf" />
     <Content Include="Content\webfonts\fa-regular-400.woff" />
     <Content Include="Content\webfonts\fa-regular-400.woff2" />
+    <Content Include="Resources\ngVoting\.angular-cli.json" />
+    <Content Include="Resources\ngVoting\.editorconfig" />
+    <Content Include="Resources\ngVoting\.gitignore" />
     <Content Include="Resources\ngVoting\dist\favicon.ico" />
     <Content Include="Resources\ngVoting\dist\index.html" />
     <Content Include="Resources\ngVoting\dist\inline.bundle.js" />
@@ -389,6 +393,22 @@
     <Content Include="Resources\ngVoting\dist\styles.bundle.js.map" />
     <Content Include="Resources\ngVoting\dist\vendor.bundle.js" />
     <Content Include="Resources\ngVoting\dist\vendor.bundle.js.map" />
+    <Content Include="Resources\ngVoting\e2e\tsconfig.e2e.json" />
+    <Content Include="Resources\ngVoting\karma.conf.js" />
+    <Content Include="Resources\ngVoting\package-lock.json" />
+    <Content Include="Resources\ngVoting\package.json" />
+    <Content Include="Resources\ngVoting\protractor.conf.js" />
+    <Content Include="Resources\ngVoting\README.md" />
+    <Content Include="Resources\ngVoting\src\app\app.component.css" />
+    <Content Include="Resources\ngVoting\src\app\app.component.html" />
+    <Content Include="Resources\ngVoting\src\assets\.gitkeep" />
+    <Content Include="Resources\ngVoting\src\favicon.ico" />
+    <Content Include="Resources\ngVoting\src\index.html" />
+    <Content Include="Resources\ngVoting\src\styles.css" />
+    <Content Include="Resources\ngVoting\src\tsconfig.app.json" />
+    <Content Include="Resources\ngVoting\src\tsconfig.spec.json" />
+    <Content Include="Resources\ngVoting\tsconfig.json" />
+    <Content Include="Resources\ngVoting\tslint.json" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -518,6 +538,18 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Resources\ngVoting\e2e\app.e2e-spec.ts" />
+    <TypeScriptCompile Include="Resources\ngVoting\e2e\app.po.ts" />
+    <TypeScriptCompile Include="Resources\ngVoting\src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="Resources\ngVoting\src\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="Resources\ngVoting\src\app\app.component.ts" />
+    <TypeScriptCompile Include="Resources\ngVoting\src\app\app.module.ts" />
+    <TypeScriptCompile Include="Resources\ngVoting\src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="Resources\ngVoting\src\environments\environment.ts" />
+    <TypeScriptCompile Include="Resources\ngVoting\src\main.ts" />
+    <TypeScriptCompile Include="Resources\ngVoting\src\polyfills.ts" />
+    <TypeScriptCompile Include="Resources\ngVoting\src\test.ts" />
+    <TypeScriptCompile Include="Resources\ngVoting\src\typings.d.ts" />
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <PropertyGroup>
