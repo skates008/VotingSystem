@@ -1,0 +1,15 @@
+<h2>Login</h2>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div>
+    "To begin the voting process, locate your Personal Identification Number (PIN) on your ballot package received by mail. See example"
+    <a href="http://www.pdf995.com/samples/pdf.pdf" >PDF</a>
+    <BR /><BR />
+    "Call the Everyone Counts/IVS Customer Service Line at (888) 492-4763 if you need assistance locating your PIN."
+  </div>
+  <div class="form-group">
+    <label for="pin">PIN (required)</label>
+  </div>
+  <div class="form-group">
+    <label for="ssn">Last 4 Digits of Social Security number (required)</label>
+  </div>
+</form>
