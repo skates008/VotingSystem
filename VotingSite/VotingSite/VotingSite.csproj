@@ -444,6 +444,13 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="app-angular\.gitignore" />
+    <Content Include="app-angular\src\app\app.component.css" />
+    <Content Include="app-angular\src\app\app.component.html" />
+    <Content Include="app-angular\src\favicon.ico" />
+    <Content Include="app-angular\src\index.html" />
+    <Content Include="app-angular\src\karma.conf.js" />
+    <Content Include="app-angular\src\styles.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -474,6 +481,17 @@
     <Content Include="Views\Shared\_LandAndVoteLayout.cshtml" />
     <Content Include="Views\ReviewBallot\Index.cshtml" />
     <Content Include="Views\Voting\Index.cshtml" />
+    <Content Include="app-angular\.editorconfig" />
+    <Content Include="app-angular\angular.json" />
+    <Content Include="app-angular\package.json" />
+    <Content Include="app-angular\README.md" />
+    <Content Include="app-angular\src\assets\.gitkeep" />
+    <Content Include="app-angular\src\browserslist" />
+    <Content Include="app-angular\src\tsconfig.app.json" />
+    <Content Include="app-angular\src\tsconfig.spec.json" />
+    <Content Include="app-angular\src\tslint.json" />
+    <Content Include="app-angular\tsconfig.json" />
+    <Content Include="app-angular\tslint.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -506,6 +524,15 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+    <TypeScriptCompile Include="app-angular\src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="app-angular\src\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="app-angular\src\app\app.component.ts" />
+    <TypeScriptCompile Include="app-angular\src\app\app.module.ts" />
+    <TypeScriptCompile Include="app-angular\src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="app-angular\src\environments\environment.ts" />
+    <TypeScriptCompile Include="app-angular\src\main.ts" />
+    <TypeScriptCompile Include="app-angular\src\polyfills.ts" />
+    <TypeScriptCompile Include="app-angular\src\test.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
