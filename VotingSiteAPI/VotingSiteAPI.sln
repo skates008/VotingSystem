@@ -21,6 +21,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6658C4CA-6D1E-41C2-87A6-50625A1D2623}"
 	ProjectSection(SolutionItems) = preProject
 		.tfignore = .tfignore
+		VotingSiteAPI.sln.DotSettings = VotingSiteAPI.sln.DotSettings
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLScripts", "SQLScripts", "{A48BDB1D-0E93-46E1-AF94-10A9EB2790A2}"
@@ -85,38 +86,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {765DD0E2-CF0E-4BDE-893A-55AF4B7D66C5}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 10
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://tfs2017:8080/tfs/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = VotingSiteAPI.Data\\VotingSiteAPI.Data.csproj
-		SccProjectName1 = VotingSiteAPI.Data
-		SccLocalPath1 = VotingSiteAPI.Data
-		SccProjectUniqueName2 = VotingSiteAPI.Domain\\VotingSiteAPI.Domain.csproj
-		SccProjectName2 = VotingSiteAPI.Domain
-		SccLocalPath2 = VotingSiteAPI.Domain
-		SccProjectUniqueName3 = VotingSiteAPI.Services\\VotingSiteAPI.Services.csproj
-		SccProjectName3 = VotingSiteAPI.Services
-		SccLocalPath3 = VotingSiteAPI.Services
-		SccProjectUniqueName4 = VotingSiteAPI.Tests\\VotingSiteAPI.Tests.csproj
-		SccProjectName4 = VotingSiteAPI.Tests
-		SccLocalPath4 = VotingSiteAPI.Tests
-		SccProjectUniqueName5 = VotingSiteAPI\\VotingSiteAPI.csproj
-		SccProjectName5 = VotingSiteAPI
-		SccLocalPath5 = VotingSiteAPI
-		SccProjectUniqueName6 = VotingSiteAPI.Logging\\VotingSiteAPI.Logging.csproj
-		SccProjectName6 = VotingSiteAPI.Logging
-		SccLocalPath6 = VotingSiteAPI.Logging
-		SccProjectUniqueName7 = VotingSiteAPI.FunctionalTests\\VotingSiteAPI.FunctionalTests.csproj
-		SccProjectName7 = VotingSiteAPI.FunctionalTests
-		SccLocalPath7 = VotingSiteAPI.FunctionalTests
-		SccProjectUniqueName8 = VotingSiteAPI.TestHarnessConApp01\\VotingSiteAPI.TestHarnessConApp01.csproj
-		SccProjectName8 = VotingSiteAPI.TestHarnessConApp01
-		SccLocalPath8 = VotingSiteAPI.TestHarnessConApp01
-		SccProjectUniqueName9 = VotingSiteAPI.SharedModels\\VotingSiteAPI.SharedModels.csproj
-		SccProjectName9 = VotingSiteAPI.SharedModels
-		SccLocalPath9 = VotingSiteAPI.SharedModels
 	EndGlobalSection
 EndGlobal

@@ -10,7 +10,6 @@ namespace VotingSiteAPI.Controllers
     /// <summary>
     /// This controller may not be necessary.
     /// </summary>
-    [OwinAuthorize]
     [RoutePrefix("api/v1/landing")]
     public class LandingPageController : ApiController
     {
@@ -32,6 +31,11 @@ namespace VotingSiteAPI.Controllers
 
         // Landing Page information is retrieved via the GetPageData() method
         // of the LoginController. [@ ".../login/pageData/{electionId}"]
+
+        //[OwinAuthorize]
+        //public IHttpActionResult DoSomeEndPointyLikeThing()
+        //{ }
+
 
     }
 }

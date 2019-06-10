@@ -38,6 +38,7 @@ namespace VotingSiteAPI.Data.EfCfgMaps
             Property(x => x.LoginId).IsOptional().IsUnicode(false);
             Property(x => x.LoginPin).IsOptional().IsUnicode(false);
             Property(x => x.VoteCompleted).IsOptional();
+            Property(x => x.AccountLockoutExpires).IsOptional();
 
         }
     }

@@ -68,6 +68,11 @@ namespace VotingSiteAPI.Domain.Entities
         [Display(Name = "Vote completed")]
         public bool? VoteCompleted { get; set; } // VoteCompleted
 
+        [Column(@"AccountLockoutExpires", Order = 9, TypeName = "datetime")]
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Account lockout expires")]
+        public System.DateTime? AccountLockoutExpires { get; set; } // AccountLockoutExpires
+
         // Reverse navigation
 
         /// <summary>

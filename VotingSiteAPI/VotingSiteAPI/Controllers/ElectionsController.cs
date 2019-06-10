@@ -8,7 +8,6 @@ using VotingSiteAPI.Services;
 
 namespace VotingSiteAPI.Controllers
 {
-    [OwinAuthorize]
     [RoutePrefix("api/v1/elections")]
     public class ElectionsController : ApiController
     {
@@ -32,6 +31,7 @@ namespace VotingSiteAPI.Controllers
         /// <returns>
         /// An instance of the <see cref="ElectionIdOpenAndClosed"/> class.
         /// </returns>
+        [OwinAuthorize]
         [HttpGet]
         [Route("")]     // allows for QueryString OR MVC-style parameters on the Url
         [Route("{called_address}")]

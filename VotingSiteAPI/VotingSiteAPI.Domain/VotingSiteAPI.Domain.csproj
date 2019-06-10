@@ -90,6 +90,7 @@
     <Compile Include="Models\ContestIvrResultModel.cs" />
     <Compile Include="Models\ContestResultModel.cs" />
     <Compile Include="Models\ElectionIdOpenAndClosed.cs" />
+    <Compile Include="Models\IvrUserLoginResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

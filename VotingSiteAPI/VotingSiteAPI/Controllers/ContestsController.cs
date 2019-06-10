@@ -10,7 +10,6 @@ using VotingSiteAPI.Services;
 
 namespace VotingSiteAPI.Controllers
 {
-    [OwinAuthorize]
     [RoutePrefix("api/v1/contests")]
     public class ContestsController : ApiController
     {
@@ -42,6 +41,7 @@ namespace VotingSiteAPI.Controllers
         /// <remarks>
         /// api/v1/contests/{electionId}
         /// </remarks>
+        [OwinAuthorize]
         [HttpGet]
         [Route("")]
         [Route("{electionId}")]
@@ -80,6 +80,7 @@ namespace VotingSiteAPI.Controllers
         /// </para>
         /// api/v1/contests/ui/{electionId}
         /// </remarks>
+        [OwinAuthorize]
         [HttpGet]
         [Route("{contestId}/candidates")]
         public IHttpActionResult GetCandidatesByContestId(int contestId)

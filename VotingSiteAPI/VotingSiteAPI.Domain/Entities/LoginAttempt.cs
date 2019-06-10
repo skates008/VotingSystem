@@ -44,11 +44,13 @@ namespace VotingSiteAPI.Domain.Entities
         public string BrowserAgent { get; set; } // BrowserAgent (length: 200)
 
         [Column(@"TimeStamp", Order = 4, TypeName = "datetime")]
+        [Index(@"LoginIdAndTimeStamp-nc", 2, IsUnique = false, IsClustered = false)]
         [DataType(DataType.DateTime)]
         [Display(Name = "Time stamp")]
         public System.DateTime? TimeStamp { get; set; } // TimeStamp
 
         [Column(@"EnteredLoginID", Order = 5, TypeName = "varchar")]
+        [Index(@"LoginIdAndTimeStamp-nc", 1, IsUnique = false, IsClustered = false)]
         [MaxLength(50)]
         [StringLength(50)]
         [Display(Name = "Entered login ID")]
