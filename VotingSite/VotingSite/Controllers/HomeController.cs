@@ -56,13 +56,13 @@ namespace VotingSite.Controllers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
-            var usersHost = Request.UserAgent;
-            var usersIpAddress = Request.UserHostAddress;
+            //var usersHost = Request.UserAgent;
+            //var usersIpAddress = Request.UserHostAddress;
 
             LoginViewModel loginVm = await _uiDependentLoginServices.GetLoginScreenDataAsync(_currentElectionId);
 
-            loginVm.UserIp = usersIpAddress;
-            loginVm.BrowserAgent = usersHost;
+            //loginVm.UserIp = usersIpAddress;
+            //loginVm.BrowserAgent = usersHost;
 
             return View(loginVm);
         }
