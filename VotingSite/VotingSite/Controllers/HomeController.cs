@@ -64,7 +64,10 @@ namespace VotingSite.Controllers
             loginVm.UserIp = usersIpAddress;
             loginVm.BrowserAgent = usersHost;
 
+            if (Request.QueryString["ng"] != null)
             return View("Index2", loginVm);
+
+            return View(loginVm);
         }
 
         [HttpPost]
