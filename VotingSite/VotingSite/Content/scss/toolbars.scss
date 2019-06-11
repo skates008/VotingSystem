@@ -528,7 +528,7 @@ $toolbar-bottom-icon-high-desktop-color: $custom-background-color;
     display: block;
 }
 
-@media screen and (max-width:825px) {
+@media screen and (max-width:$breakpoint-mobile-lg) {
     .toolbar-content {
         flex-direction: column-reverse;
     }
