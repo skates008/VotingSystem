@@ -1,6 +1,14 @@
 @import './theme';
 
 $dropdown-shadow: rgba($black, .3);
+$custom-background-color: #2870a4;
+
+$toolbar-background-color: $custom-background-color;
+$toolbar-bottom-icon-high-desktop-color: $custom-background-color;
+
+#loginPageWrapper {
+    overflow: visible;
+}
 
 .elect-toolbar {
   align-items: center;
@@ -14,8 +22,6 @@ $dropdown-shadow: rgba($black, .3);
   width: 100%;
 
   @media screen and (min-width: $breakpoint-mobile-lg) {
-    border-bottom: $toolbar-desktop-border-width solid $toolbar-desktop-border-color;
-    flex: 0 0 $top-toolbar-desktop-height;
     height: $top-toolbar-desktop-height;
     position: relative;
   }
@@ -86,7 +92,6 @@ $dropdown-shadow: rgba($black, .3);
   display: none;
   flex: 1;
   height: 100%;
-  padding: 5px 15px;
 
   @media screen and (min-width: $breakpoint-mobile-lg) {
     display: flex;
@@ -289,6 +294,7 @@ $dropdown-shadow: rgba($black, .3);
   font-size: .8rem;
   text-align: center;
   text-transform: none;
+  color: $toolbar-background-color;
 
   @media screen and (min-width: $breakpoint-mobile-lg) {
     flex: 1 1 auto;
