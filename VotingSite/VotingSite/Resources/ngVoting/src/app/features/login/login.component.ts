@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-login',
@@ -15,15 +17,24 @@ export class LoginComponent implements OnInit {
     LoginPin: new FormControl(null, [Validators.required])
   });
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.model = JSON.parse((<any>document.getElementById("model")).value);
   }
 
   ngOnInit() {
   }
 
-  submit(){
-    console.log(this.formGroup.valid);
+  submit() {
+    return this.http.post("Home/ngIndex", this.formGroup.value).subscribe(
+      (data: any) => {
+        debugger;
+      },
+      (error: any) => {
+        debugger;
+
+      });
+
+
   }
 
 }

@@ -120,6 +120,46 @@ namespace VotingSite.Controllers
             // which means if I want to go from here, I do have to redirect.
         }
 
+        [HttpPost]
+        [ActionName("ngIndex")]
+        public async Task<ActionResult> ngIndexPost(LoginViewModel loginVm, string returnUrl)
+        {
+            if (!ModelState.IsValid)
+            {
+                // go back and try again
+                loginVm = _uiDependentLoginServices.VotingIsOpenVerification(loginVm);
+                return View(loginVm);
+            }
+
+            var userCredentials = new UserCredentialsModel
+            {
+                ElectionId = Convert.ToInt32(loginVm.ElectionId),
+                UsernameOrId = loginVm.LoginId,
+                PasswordOrPin = loginVm.LoginPin
+            };
+
+            // DAL needed here.
+            var userCredentialsValid = await
+                _userCredentialsValidation.ValidateUserCredentialsAsync(userCredentials);
+
+            if (!userCredentialsValid)
+            {
+                ModelState.AddModelError(string.Empty, "Invalid login attempt. Please try again.");
+                loginVm = _uiDependentLoginServices.VotingIsOpenVerification(loginVm);
+
+                return Json(loginVm);
+            }
+
+            AuthenticationManager.SignOut("ApplicationCookie", "ExternalCookie");
+
+            ClaimsIdentity identity = _uiDependentLoginServices.CreateOwinUserIdentity(loginVm);
+
+            AuthenticationManager.SignIn(identity);
+
+            return await Task.Run<ActionResult>(() =>
+                RedirectToAction("Index", "Landing"));
+        }
+
         public async Task<ActionResult> Logout()
         {
             // logout functionality 
