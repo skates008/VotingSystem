@@ -87,6 +87,8 @@ namespace VotingSiteAPI
             container.Register<IWebConfigContainer, WebConfigContainer>(Lifestyle.Scoped);
             container.Register<IWebConfigReaderService, WebConfigReaderService>(Lifestyle.Scoped);
 
+            container.Register<ILoginAttemptsRepository, LoginAttemptsRepository>(Lifestyle.Scoped);
+
             container.Register<IElectionsServices, ElectionsServices>(Lifestyle.Scoped);
             container.Register<IElectionsRepository, ElectionsRepository>(Lifestyle.Scoped);
 

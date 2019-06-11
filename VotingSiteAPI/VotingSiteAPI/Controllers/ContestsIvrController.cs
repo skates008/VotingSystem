@@ -8,7 +8,6 @@ using VotingSiteAPI.Services;
 
 namespace VotingSiteAPI.Controllers
 {
-    [OwinAuthorize]
     // ReSharper disable once StringLiteralTypo
     [RoutePrefix("api/v1/ivrcontests")]
     public class ContestsIvrController : ApiController
@@ -40,6 +39,7 @@ namespace VotingSiteAPI.Controllers
         /// ReSharper disable once CommentTypo
         /// GET .../api/v1/ivrcontests/{electionId}
         /// </remarks>
+        [OwinAuthorize]
         [HttpGet]
         [Route("")] // allows for QueryString OR MVC-style parameters on the Url
         [Route("{electionId}")]

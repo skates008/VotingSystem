@@ -88,6 +88,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VotingSiteAPI_EfConfigMaps.tt</DependentUpon>
     </Compile>
+    <Compile Include="Enums\IvrLoginStatusCodes.cs" />
     <Compile Include="FakeDbSet.cs">
       <DependentUpon>VotingSiteDb.tt</DependentUpon>
     </Compile>
@@ -106,6 +107,7 @@
     <Compile Include="Repositories\CandidatesRepository.cs" />
     <Compile Include="Repositories\ContestsRepository.cs" />
     <Compile Include="Repositories\ElectionsRepository.cs" />
+    <Compile Include="Repositories\LoginAttemptsRepository.cs" />
     <Compile Include="Repositories\VotersRepository.cs" />
     <Compile Include="Repositories\VotesRepository.cs" />
     <Compile Include="VotingSiteAPIDbCtx.cs">
