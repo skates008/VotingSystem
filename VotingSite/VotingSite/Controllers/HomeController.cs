@@ -144,10 +144,11 @@ namespace VotingSite.Controllers
 
             if (!userCredentialsValid)
             {
-                ModelState.AddModelError(string.Empty, "Invalid login attempt. Please try again.");
+                string errorMessage= "Invalid login attempt. Please try again.";
+                ModelState.AddModelError(string.Empty, errorMessage);
                 loginVm = _uiDependentLoginServices.VotingIsOpenVerification(loginVm);
 
-                return Json(loginVm);
+                return Json(new { model = loginVm, error = errorMessage });
             }
 
             AuthenticationManager.SignOut("ApplicationCookie", "ExternalCookie");

@@ -14,20 +14,52 @@
 
           <div *ngIf="model.VotingIsOpen" innerHTML="{{model.LoginScreenOpenMessage}}"></div>
 
+          <div class="form-group" *ngIf="errorMessage != ''">
+            <div class="validation-summary-errors text-danger">
+              {{errorMessage}}
+            </div>
+          </div>
 
           <div class="form-group">
             <label for="LoginId">{{model.LoginIdLabelTxt}}</label>
             <div class="col-md-12">
-              <input autofocus="autofocus" class="form-control shadow-none" formControlName="LoginId" id="LoginId" name="LoginId"
-                type="password">
+              <input autofocus="autofocus" class="form-control shadow-none" formControlName="LoginId" id="LoginId"
+                name="LoginId" type="password">
+            </div>
+            <div class="col-md-12">
+              <span *ngIf="submitted && formGroup.get('LoginId').errors && formGroup.get('LoginId').errors.required"
+                class="error-message">{{validationMessages.LoginId.Required}}</span>
+
+              <span *ngIf="submitted && formGroup.get('LoginId').errors && formGroup.get('LoginId').errors.minlength"
+                class="error-message">{{validationMessages.LoginId.MinLength}}</span>
+
+              <span *ngIf="submitted && formGroup.get('LoginId').errors && formGroup.get('LoginId').errors.maxlength"
+                class="error-message">{{validationMessages.LoginId.MaxLength}}</span>
+
+              <span *ngIf="submitted && formGroup.get('LoginId').errors && formGroup.get('LoginId').errors.pattern"
+                class="error-message">{{validationMessages.LoginId.RegularExpression}}</span>
             </div>
           </div>
 
           <div class="form-group">
             <label for="LoginPin">{{model.LoginPinLabelTxt}}</label>
             <div class="col-md-12">
-              <input class="form-control shadow-none" id="LoginPin" name="LoginPin" formControlName="LoginPin" type="password">
+              <input class="form-control shadow-none" id="LoginPin" name="LoginPin" formControlName="LoginPin"
+                type="password">
             </div>
+            <div class="col-md-12">
+                <span *ngIf="submitted && formGroup.get('LoginPin').errors && formGroup.get('LoginPin').errors.required"
+                  class="error-message">{{validationMessages.LoginPin.Required}}</span>
+  
+                <span *ngIf="submitted && formGroup.get('LoginPin').errors && formGroup.get('LoginPin').errors.minlength"
+                  class="error-message">{{validationMessages.LoginPin.MinLength}}</span>
+  
+                <span *ngIf="submitted && formGroup.get('LoginPin').errors && formGroup.get('LoginPin').errors.maxlength"
+                  class="error-message">{{validationMessages.LoginPin.MaxLength}}</span>
+  
+                <span *ngIf="submitted && formGroup.get('LoginPin').errors && formGroup.get('LoginPin').errors.pattern"
+                  class="error-message">{{validationMessages.LoginPin.RegularExpression}}</span>
+              </div>
           </div>
 
         </div>
