@@ -195,6 +195,7 @@
     <Content Include="Content\css\loginPage.min.css">
       <DependentUpon>loginPage.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\simple-sidebar.css" />
     <Content Include="Content\css\site.css" />
     <Content Include="Content\css\site.min.css">
       <DependentUpon>site.css</DependentUpon>

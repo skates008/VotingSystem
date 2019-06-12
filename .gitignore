@@ -10,6 +10,15 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# CSS files rebuilt by the scss 'compiler'
+#VotingSite/Content/css/index*.css
+#VotingSite/Content/css/landAndVoteLayout*.css
+#VotingSite/Content/css/loginPage*.css 
+#VotingSite/Content/css/
+#VotingSite/Content/css/
+#VotingSite/Content/css/toolbars*.css 
+#VotingSite/Content/css/site*.css 
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
