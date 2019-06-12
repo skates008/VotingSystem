@@ -11,15 +11,23 @@
 </head>
 
 <body>
+
     <div id="loginPageWrapper" class="d-flex view-container">
         <div class="elect-toolbar top">
             @* Cannot find a class called top in all of the EC code. -SKF 5/13/19 *@
+
+
+
             <div class="toolbar-background"></div>
             <div class="toolbar-content">
 
                 @* Page Content *@
                 <div class="election-info">
-                    <div class="election-title">@Model.ElectionName</div>
+                    <div class="election-title">
+
+                        <div class="logo"></div>
+                        <div class="name">@Model.ElectionName</div>
+                    </div>
                 </div>
 
                 <div class="elect-actions">

@@ -195,7 +195,6 @@
     <Content Include="Content\css\loginPage.min.css">
       <DependentUpon>loginPage.css</DependentUpon>
     </Content>
-    <Content Include="Content\css\simple-sidebar.css" />
     <Content Include="Content\css\site.css" />
     <Content Include="Content\css\site.min.css">
       <DependentUpon>site.css</DependentUpon>
@@ -246,6 +245,8 @@
     <Content Include="Content\icons\selection\oval-solid.svg" />
     <Content Include="Content\icons\selection\switch-off.svg" />
     <Content Include="Content\icons\selection\switch-on.svg" />
+    <Content Include="Content\images\CalPERS_H_Blue.png" />
+    <Content Include="Content\images\CalPERS_H_Blue.svg" />
     <Content Include="Content\simple-sidebar.css" />
     <Content Include="Content\webfonts\fa-brands-400.svg" />
     <Content Include="Content\webfonts\fa-regular-400.svg" />
@@ -439,6 +440,7 @@
     <Content Include="Content\webfonts\Roboto-ThinItalic.woff2" />
     <Content Include="Content\scss\landAndVoteLayout.scss" />
     <Content Include="Content\scss\loginPage.scss" />
+    <Content Include="Content\images\CalPERS_H_Blue.eps" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
