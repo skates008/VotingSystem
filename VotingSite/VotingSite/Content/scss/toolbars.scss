@@ -534,6 +534,10 @@ $dropdown-shadow: rgba($black, .3);
     display: block;
 }
 
+.election-title .name {
+    margin-left: 40px;
+}
+
 @media screen and (max-width:$breakpoint-mobile-lg) {
     .toolbar-content {
         flex-direction: column-reverse;
@@ -549,10 +553,6 @@ $dropdown-shadow: rgba($black, .3);
         margin-top: 10px;
         margin-bottom: 10px;
         padding: 20px;
-    }
-
-    .election-title .name{
-        margin-left:40px;
     }
 
     .elect-actions {
