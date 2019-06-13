@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 using VotingSite.DataAccessServices;
@@ -43,49 +44,50 @@ namespace VotingSite.Controllers
         /// <returns></returns>
         [HttpGet]
         [Authorize]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             // Must get the data to load into the LandingPageViewModel because
             // passing it to this method puts all of the data into the Url.
-            var landingPgViewModel = this.LandingPgViewModel;
+            //var landingPgViewModel = this.LandingPgViewModel;
 
-            // GetLandingData( _currentElectionId )
+            // Coming Soon!
+            LandingPgViewModel landingPgViewModel =
+                await _landingPageServices.GetLandingPageDataAsync(_webConfigContainer.ElectionId);
 
-            // build the 'html Id' value before adding to the contests collection
-            var tempId = 1;
-            var htmlContestId = $"ContestItem_{tempId}_Id";
-            landingPgViewModel.BallotData.Contests.Add(new ContestDto
-            {
-                Id = 1,
-                HtmlContestId = htmlContestId,
-                Title = "Position A",
-                MaxVotes = 2,
-                VotesCast = 0,
-                SortOrder = 1
-            });
+            ////// build the 'html Id' value before adding to the contests collection
+            ////var tempId = 1;
+            ////var htmlContestId = $"ContestItem_{tempId}_Id";
+            ////landingPgViewModel.BallotData.Contests.Add(new ContestDto
+            ////{
+            ////    Id = 1,
+            ////    HtmlContestId = htmlContestId,
+            ////    Title = "Position A",
+            ////    MaxVotes = 2,
+            ////    VotesCast = 0,
+            ////    SortOrder = 1
+            ////});
 
-            landingPgViewModel.BallotData.Contests.Add(new ContestDto
-            {
-                Id = 2,
-                HtmlContestId = "ContestItem_2_Id",
-                Title = "Position B",
-                MaxVotes = 2,
-                VotesCast = 0,
-                SortOrder = 2
-            });
+            ////landingPgViewModel.BallotData.Contests.Add(new ContestDto
+            ////{
+            ////    Id = 2,
+            ////    HtmlContestId = "ContestItem_2_Id",
+            ////    Title = "Position B",
+            ////    MaxVotes = 2,
+            ////    VotesCast = 0,
+            ////    SortOrder = 2
+            ////});
 
-            landingPgViewModel.ElectionId = _webConfigContainer.ElectionId;
-            landingPgViewModel.ElectionName = "2019 Member-at-large Board Election";
-            landingPgViewModel.LandingPageTitle = "Success!";
-            landingPgViewModel.LandingPageMessage =
-                "<p>Your PIN and the last 4 digits of your Social Security number have been accepted, and you are now logged in.</p><p>By submitting my vote online, I HEARBY CERTIFY UNDER PENALTY OF PERJURY that I was an active or retired member of the California Public Employees' Retirement System (CalPERS) on or before July 1, 2019 and therefore I am eligible to participate in this election and that I personally vote the ballot to be submitted online.</p><p>Select <b>Start Voting</b> below to access your ballot and begin voting.</p><p>If you need help, select <b>Help</b> in the menu bar.</p>";
+            ////landingPgViewModel.ElectionId = _webConfigContainer.ElectionId;
+            ////landingPgViewModel.ElectionName = "2019 Member-at-large Board Election";
+            ////landingPgViewModel.LandingPageTitle = "Success!";
+            ////landingPgViewModel.LandingPageMessage =
+            ////    "<p>Your PIN and the last 4 digits of your Social Security number have been accepted, and you are now logged in.</p><p>By submitting my vote online, I HEARBY CERTIFY UNDER PENALTY OF PERJURY that I was an active or retired member of the California Public Employees' Retirement System (CalPERS) on or before July 1, 2019 and therefore I am eligible to participate in this election and that I personally vote the ballot to be submitted online.</p><p>Select <b>Start Voting</b> below to access your ballot and begin voting.</p><p>If you need help, select <b>Help</b> in the menu bar.</p>";
 
             // Passing it this way will send it to the layout:
             // Shared\_LandAndVoteLayout.cshtml
             // AND Views\Landing\Landing.cshtml
             return View("Landing", landingPgViewModel);
         }
-
 
         [HttpPost]
         [Authorize]

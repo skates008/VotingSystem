@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
 using VotingSite.DAL;
-using VotingSite.DataAccessServices;
-using VotingSite.DataAccessServices.HttpClientHelpers;
 using VotingSite.Domain;
-using VotingSite.Services;
 using VotingSite.UiDependentModels;
 using VotingSite.UiDependentServices;
 
@@ -22,87 +18,83 @@ namespace VotingSite.Tests.Services
     [TestClass]
     public class UIDLandingPageServicesTests
     {
-        public UIDLandingPageServicesTests()
-        {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
-
-
         //public UIDLandingPageServices( ILandingPageDataAccess landingPageDataAccess )
         //async Task<LandingPgViewModel> GetLandingPageDataAsync(int electionId)
         [TestMethod]
-        public async Task TestMethod1()
+        public async Task GivenValidArgument_GetLandingPageDataAsync_ShouldReturn_LandingPgViewModel()
         {
             // Arrange
             const int expectedElectionId = 1;
 
-            //LandingPageDataAccess(
-            //  IWebConfigContainer webConfigContainer,
-            //  IHttpClientProvider httpClientProvider)
-            var mockWebConfigContainer = new Mock<IWebConfigContainer>();
-            var mockHttpClientProvider = new Mock<IHttpClientProvider>();
-
+            // create fake data to return to the 
             var mockLandingPageDataAccess = new Mock<ILandingPageDataAccess>();
-
-            //async Task<LandingPageViewData> GetLandingPageViewData(int electionId)
+            // Method To Test: async Task<LandingPageViewData> GetLandingPageViewData(int electionId)
             mockLandingPageDataAccess.Setup(mut => mut.GetLandingPageViewData(expectedElectionId))
                 .Returns<int>(eId =>
-                    Task.FromResult(new LandingPageViewData
+                {
+                    LandingPageViewData fakeResult;
+
+                    // so that this only returns the contests IF the electionId == 1.
+                    if (eId == expectedElectionId)
                     {
-                        ElectionId = eId,
-                        ElectionName = "THIS IS THE TEST ELECTION NAME",
-                        LandingPageTitle = "Success!",
-                        LandingPageMessage = "LandingPageMessage; Welcome to our Voting system!",
-                        Contests = new List<ContestDto>
+                        fakeResult = new LandingPageViewData
                         {
-                            new ContestDto
+                            ElectionId = eId,
+                            ElectionName = "THIS IS THE TEST ELECTION NAME",
+                            LandingPageTitle = "Success!",
+                            LandingPageMessage = "LandingPageMessage; Welcome to our Voting system!",
+                            Contests = new List<ContestDto>
                             {
-                                Id = 1,
-                                HtmlContestId = "ContestItem_2_Id",
-                                Title = "Position A",
-                                MaxVotes = 2,
-                                VotesCast = 0,
-                                SortOrder = 1
-                            },
-                            new ContestDto
-                            {
-                                Id = 2,
-                                HtmlContestId = "ContestItem_2_Id",
-                                Title = "Position B",
-                                MaxVotes = 2,
-                                VotesCast = 0,
-                                SortOrder = 2
+                                new ContestDto
+                                {
+                                    Id = 1,
+                                    HtmlContestId = "ContestItem_1_Id",
+                                    Title = "Position A",
+                                    MaxVotes = 2,
+                                    VotesCast = 0,
+                                    SortOrder = 1
+                                },
+                                new ContestDto
+                                {
+                                    Id = 2,
+                                    HtmlContestId = "ContestItem_2_Id",
+                                    Title = "Position B",
+                                    MaxVotes = 2,
+                                    VotesCast = 0,
+                                    SortOrder = 2
+                                }
                             }
-                        }
-                    }));
+                        };
+                    }
+                    else
+                    {
+                        fakeResult = new LandingPageViewData();
+                    }
 
-            // LandingPgViewModel
+                    return Task.FromResult(fakeResult);
+                });
 
-            //UIDLandingPageServices( ILandingPageDataAccess landingPageDataAccess )
-            var mockLandingPageServices = new UIDLandingPageServices(
-                mockLandingPageDataAccess.Object);
+            //var htmlContestId = $"ContestItem_{tempId}_Id";
+            const string expectedHtmlContestIdString1 = "ContestItem_1_Id";
+            const string expectedHtmlContestIdString2 = "ContestItem_2_Id";
+            const string expectedContest2TitleString = "Position B";
 
-            //var service = new UiDependentLoginServices(mockLoginScreenDataAccess.Object);
-            //var expectedReturnedType = typeof(LoginViewModel);
-            //
-            //// Act
-            //var callResult = await service.GetLoginScreenDataAsync(expectedElectionId);
-            //
-            //// Assert
-            //mockLoginScreenDataAccess.Verify(
-            //	mut => mut.GetDataForLoginScreenAsync(expectedElectionId),
-            //	Times.Once);
-            //Assert.IsNotNull(callResult);
-            //Assert.IsInstanceOfType(callResult, expectedReturnedType);
-            //
-            //Assert.AreEqual(expectedElectionId, callResult.ElectionId);
-            //Assert.AreEqual("Success!", callResult.LandingPageTitle);
+            // class UIDLandingPageServices ctor( ILandingPageDataAccess landingPageDataAccess )
+            var mockLandingPageServices = new UIDLandingPageServices(mockLandingPageDataAccess.Object);
+            var expectedReturnType = typeof(LandingPgViewModel);
 
+            // Act
+            var landingPgViewModel = await mockLandingPageServices.GetLandingPageDataAsync(expectedElectionId);
 
+            // Assert
+            Assert.IsNotNull(landingPgViewModel);
+            Assert.IsInstanceOfType(landingPgViewModel, expectedReturnType);
+            Assert.AreEqual(2, landingPgViewModel.BallotData.Contests.Count);
 
+            Assert.AreEqual(landingPgViewModel.BallotData.Contests[0].HtmlContestId, expectedHtmlContestIdString1);
+            Assert.AreEqual(landingPgViewModel.BallotData.Contests[1].HtmlContestId, expectedHtmlContestIdString2);
 
+            Assert.AreEqual(landingPgViewModel.BallotData.Contests[1].Title, expectedContest2TitleString);
         }
     }
 }

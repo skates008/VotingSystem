@@ -28,25 +28,25 @@ namespace VotingSite.UiDependentServices
             // CALLING: async Task<LandingPageViewData> GetLandingPageViewData(int electionId)
             LandingPageViewData retrievedLandingPgData = await _landingPageDataAccess.GetLandingPageViewData(electionId);
 
+            // must map LandingPageViewData -> LandingPgViewModel
             var mapperConfig = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<LandingPageViewData, LandingPgViewModel>();
 
-                cfg.CreateMap<List<ContestDto>, LandingPgViewModel>()
-                    .ForMember(dest => dest.BallotData.Contests,
-                        opt => opt.MapFrom(
-                            src => Mapper.Map<List<ContestDto>, List<ContestDto>>(src)));
+                cfg.CreateMap<LandingPageViewData, LandingPgViewModel>()
+                    .ForPath(dest => dest.BallotData.Contests, opt => opt.MapFrom(src => src.Contests));
             });
             var iMapper = mapperConfig.CreateMapper();
             var landingPgViewModel = iMapper.Map<LandingPageViewData, LandingPgViewModel>(retrievedLandingPgData);
 
             // build the 'html Id' value 
-            var tempId = 1;
-            var htmlContestId = $"ContestItem_{tempId}_Id";
+            var tempId = 0;
+            const string htmlContestIdFormatString = "ContestItem_{0}_Id";
             foreach (var contest in landingPgViewModel.BallotData.Contests)
             {
-                contest.HtmlContestId = htmlContestId;
-                tempId++;
+                var capturedTempId = ++tempId;
+                contest.HtmlContestId = string.Format(
+                    htmlContestIdFormatString, capturedTempId);
             }
 
             return landingPgViewModel;
