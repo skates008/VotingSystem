@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using AutoMapper;
 using VotingSite.DAL;
 using VotingSite.Domain;
+using VotingSite.UiDependentModels;
 
 namespace VotingSite.UiDependentServices
 {
     // IUIDLandingPageServices 
-    public class UIDLandingPageServices
+    public class UIDLandingPageServices : IUIDLandingPageServices
     {
         private readonly ILandingPageDataAccess _landingPageDataAccess;
 
@@ -21,24 +23,33 @@ namespace VotingSite.UiDependentServices
         }
 
 
-        public async Task<LandingPageViewData> GetLandingPageDataAsync(int electionId)
+        public async Task<LandingPgViewModel> GetLandingPageDataAsync(int electionId)
         {
-            //LoginViewData retrievedLoginData = await _loginScreenDataAccess.GetDataForLoginScreenAsync(electionId);
+            // CALLING: async Task<LandingPageViewData> GetLandingPageViewData(int electionId)
+            LandingPageViewData retrievedLandingPgData = await _landingPageDataAccess.GetLandingPageViewData(electionId);
 
-            //var dtNow = DateTime.Now;
-            //if (dtNow >= retrievedLoginData.OpenDate && dtNow <= retrievedLoginData.CloseDate)
-            //{
-            //    retrievedLoginData.VotingIsOpen = true;
-            //}
+            var mapperConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<LandingPageViewData, LandingPgViewModel>();
 
-            //// Map LoginViewData -> LoginViewModel
-            //var mapperConfig = new MapperConfiguration(cfg => { cfg.CreateMap<LoginViewData, LoginViewModel>(); });
-            //var iMapper = mapperConfig.CreateMapper();
-            //var loginViewModel = iMapper.Map<LoginViewData, LoginViewModel>(retrievedLoginData);
+                cfg.CreateMap<List<ContestDto>, LandingPgViewModel>()
+                    .ForMember(dest => dest.BallotData.Contests,
+                        opt => opt.MapFrom(
+                            src => Mapper.Map<List<ContestDto>, List<ContestDto>>(src)));
+            });
+            var iMapper = mapperConfig.CreateMapper();
+            var landingPgViewModel = iMapper.Map<LandingPageViewData, LandingPgViewModel>(retrievedLandingPgData);
 
-            //return loginViewModel;
+            // build the 'html Id' value 
+            var tempId = 1;
+            var htmlContestId = $"ContestItem_{tempId}_Id";
+            foreach (var contest in landingPgViewModel.BallotData.Contests)
+            {
+                contest.HtmlContestId = htmlContestId;
+                tempId++;
+            }
 
-            return await Task.FromResult(new LandingPageViewData());
+            return landingPgViewModel;
         }
 
 
