@@ -11,6 +11,10 @@ $dropdown-shadow: rgba($black, .3);
     min-height: 15vh;
     width: 100%;
     margin-left:-20px;
+
+    @media screen and (max-width: $breakpoint-mobile-lg) {
+        margin-left:-30px;
+    }
 }
 
 #loginPageWrapper {
@@ -537,6 +541,10 @@ $dropdown-shadow: rgba($black, .3);
 
 .election-title .name {
     margin-left: 10px;
+
+    @media screen and (max-width: $breakpoint-mobile-lg) {
+        margin-left: 0px;
+    }
 }
 
 @media screen and (max-width:$breakpoint-mobile-lg) {

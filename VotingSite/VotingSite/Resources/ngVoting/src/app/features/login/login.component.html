@@ -28,16 +28,16 @@
             </div>
             <div class="col-md-12">
               <span *ngIf="submitted && formGroup.get('LoginId').errors && formGroup.get('LoginId').errors.required"
-                class="error-message">{{validationMessages.LoginId.Required}}</span>
+                class="error-message text-danger">{{validationMessages.LoginId.Required}}</span>
 
               <span *ngIf="submitted && formGroup.get('LoginId').errors && formGroup.get('LoginId').errors.minlength"
-                class="error-message">{{validationMessages.LoginId.MinLength}}</span>
+                class="error-message text-danger">{{validationMessages.LoginId.MinLength}}</span>
 
               <span *ngIf="submitted && formGroup.get('LoginId').errors && formGroup.get('LoginId').errors.maxlength"
-                class="error-message">{{validationMessages.LoginId.MaxLength}}</span>
+                class="error-message text-danger">{{validationMessages.LoginId.MaxLength}}</span>
 
               <span *ngIf="submitted && formGroup.get('LoginId').errors && formGroup.get('LoginId').errors.pattern"
-                class="error-message">{{validationMessages.LoginId.RegularExpression}}</span>
+                class="error-message text-danger">{{validationMessages.LoginId.RegularExpression}}</span>
             </div>
           </div>
 
@@ -49,16 +49,16 @@
             </div>
             <div class="col-md-12">
                 <span *ngIf="submitted && formGroup.get('LoginPin').errors && formGroup.get('LoginPin').errors.required"
-                  class="error-message">{{validationMessages.LoginPin.Required}}</span>
+                  class="error-message text-danger">{{validationMessages.LoginPin.Required}}</span>
   
                 <span *ngIf="submitted && formGroup.get('LoginPin').errors && formGroup.get('LoginPin').errors.minlength"
-                  class="error-message">{{validationMessages.LoginPin.MinLength}}</span>
+                  class="error-message text-danger">{{validationMessages.LoginPin.MinLength}}</span>
   
                 <span *ngIf="submitted && formGroup.get('LoginPin').errors && formGroup.get('LoginPin').errors.maxlength"
-                  class="error-message">{{validationMessages.LoginPin.MaxLength}}</span>
+                  class="error-message text-danger">{{validationMessages.LoginPin.MaxLength}}</span>
   
                 <span *ngIf="submitted && formGroup.get('LoginPin').errors && formGroup.get('LoginPin').errors.pattern"
-                  class="error-message">{{validationMessages.LoginPin.RegularExpression}}</span>
+                  class="error-message text-danger">{{validationMessages.LoginPin.RegularExpression}}</span>
               </div>
           </div>
 
