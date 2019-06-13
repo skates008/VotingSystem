@@ -40,6 +40,7 @@ namespace VotingSite.UiDependentServices
             LoginViewModel loginVm, 
             bool isPersistent = false)
         {
+            // SKF 12-June-2019 Might want to do Roles at some point
             // string[] userRoles = (string[])Session["UserRoles"];
 
             var claims = new List<Claim>
@@ -53,6 +54,7 @@ namespace VotingSite.UiDependentServices
                 new Claim("userState", loginVm.ToString())
             };
 
+            // SKF 12-June-2019 Might want to do Roles at some point
             //userRoles.ToList().ForEach((role) => identity.AddClaim(new Claim(ClaimTypes.Role, role)));
 
             var identity = new ClaimsIdentity(claims, "ApplicationCookie");

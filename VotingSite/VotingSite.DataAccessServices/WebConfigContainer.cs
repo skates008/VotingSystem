@@ -95,6 +95,9 @@ namespace VotingSite.DataAccessServices
 
         /// <summary>
         /// Gets the base API URL.
+        /// <para>
+        /// Guaranteed to have a final '/'
+        /// </para>
         /// </summary>
         public string BaseApiUrl
         {
@@ -109,6 +112,11 @@ namespace VotingSite.DataAccessServices
                 }
 
                 _baseApiUrl = _webConfigReaderSvc.GetAppSetting<string>("BaseApiUrl");
+
+                if (!_baseApiUrl.EndsWith("/"))
+                {
+                    _baseApiUrl = _baseApiUrl.TrimEnd() + "/";
+                }
 
                 // TODO: Probably want to add the 'timeCached' (or in this case, CacheBaseApiUrlFor (DateTime or Timespan) as they may want/need to be that granular) to the web.config as well.
                 _baseApiUrlExpiration = DateTime.Now.AddHours(3);

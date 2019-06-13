@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ILoginServices.cs" />
+    <Compile Include="LandingPageServices.cs" />
     <Compile Include="LoginServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

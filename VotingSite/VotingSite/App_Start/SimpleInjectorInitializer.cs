@@ -57,6 +57,8 @@ namespace VotingSite
             // Register the types for later injection 
             //container.Register<IModelHydrator<CustWebDefRemReasonsModel>, CustWebDefRemReasonsHydrator>(Lifestyle.Scoped);
 
+            container.Register<ILandingPageDataAccess, LandingPageDataAccess>(Lifestyle.Scoped);
+
             container.Register<IUiDependentLoginServices, UiDependentLoginServices>(Lifestyle.Scoped);
             container.Register<IUserCredentialsValidation, UserCredentialsValidation>(Lifestyle.Scoped);
             container.Register<ILoginScreenDataAccess, LoginScreenDataAccess>(Lifestyle.Scoped);
