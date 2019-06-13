@@ -65,7 +65,9 @@ namespace VotingSite.Controllers
             loginVm.BrowserAgent = usersHost;
 
             if (Request.QueryString["ng"] != null)
-            return View("Index2", loginVm);
+            {
+                return View("Index2", loginVm);
+            }
 
             return View(loginVm);
         }
@@ -102,12 +104,7 @@ namespace VotingSite.Controllers
             }
 
             AuthenticationManager.SignOut("ApplicationCookie", "ExternalCookie");
-
             ClaimsIdentity identity = _uiDependentLoginServices.CreateOwinUserIdentity(loginVm);
-            
-            // TODO: Do I need to add a role that all voter's can belong to?
-            // because I thought this signed me in, and yet the [Authorize] on the Landing Controller's Index method is sending me back to the login page.
-            
             AuthenticationManager.SignIn(identity);
 
             // TODO: The UserIp & BrowserAgent fields are used when logging 'this' login attempt to the LoginAttempts table

@@ -15,7 +15,9 @@ namespace VotingSite.UiDependentModels
 
         public string ElectionName { get; set; } // ElectionName (length: 50)
 
-        // 'Ballot' specific data
+        // 'Ballot' specific data. Currently just contains:
+        // int TotalContests => Contests.Count;
+        // List<ContestDto> Contests { get; set; }
         public BallotData BallotData { get; set; }
 
         /// <summary>

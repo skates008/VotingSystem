@@ -177,6 +177,7 @@
     <Compile Include="UiDependentModels\LoginViewModel.cs" />
     <Compile Include="UiDependentServices\IUiDependentLoginServices.cs" />
     <Compile Include="UiDependentServices\UiDependentLoginServices.cs" />
+    <Compile Include="UiDependentServices\UIDLandingPageServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\bootstrap.css" />
@@ -195,6 +196,7 @@
     <Content Include="Content\css\loginPage.min.css">
       <DependentUpon>loginPage.css</DependentUpon>
     </Content>
+
     <Content Include="Content\css\site.css" />
     <Content Include="Content\css\site.min.css">
       <DependentUpon>site.css</DependentUpon>
@@ -391,6 +393,7 @@
     <Content Include="Resources\ngVoting\README.md" />
     <Content Include="Resources\ngVoting\src\app\app.component.css" />
     <Content Include="Resources\ngVoting\src\app\app.component.html" />
+    <Content Include="Resources\ngVoting\src\app\features\login\login.component.html" />
     <Content Include="Resources\ngVoting\src\assets\.gitkeep" />
     <Content Include="Resources\ngVoting\src\favicon.ico" />
     <Content Include="Resources\ngVoting\src\index.html" />
@@ -444,6 +447,8 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Resources\ngVoting\src\styles.scss" />
+    <Content Include="Resources\ngVoting\src\app\features\login\login.component.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\fontawesome.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -535,6 +540,8 @@
     <TypeScriptCompile Include="Resources\ngVoting\src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="Resources\ngVoting\src\app\app.component.ts" />
     <TypeScriptCompile Include="Resources\ngVoting\src\app\app.module.ts" />
+    <TypeScriptCompile Include="Resources\ngVoting\src\app\features\features.module.ts" />
+    <TypeScriptCompile Include="Resources\ngVoting\src\app\features\login\login.component.ts" />
     <TypeScriptCompile Include="Resources\ngVoting\src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="Resources\ngVoting\src\environments\environment.ts" />
     <TypeScriptCompile Include="Resources\ngVoting\src\main.ts" />

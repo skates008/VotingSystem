@@ -44,40 +44,35 @@ $(document).ready(function() {
     // 
     // click handler for the #loginSubmit button 
     // 
-    $("#loginSubmit").on("click", function (event) {
-        
-        //event.preventDefault();
+    $("#loginSubmit").on("click",
+        function(event) {
 
-        // Validate the form first, if it's ok, THEN submit.
-        if (validateForm()) {
-            $("#loginForm").submit();
-            return true;
-        }
+            //event.preventDefault();
 
-        return false;
-    });
+            // Validate the form first, if it's ok, THEN submit.
+            if (validateForm()) {
+                $("#loginForm").submit();
+                return true;
+            }
+
+            return false;
+        });
 
     // 
     // see if the user hit Enter within either field. If so, act like they
     // clicked on the LOG IN button.
     // 
-    $("#LoginId, #LoginPin").on("keypress", function (event) {
-        
-        var keycode = (event.keyCode ? event.keyCode : event.which);
+    $("#LoginId, #LoginPin").on("keypress",
+        function(event) {
 
-        if (keycode === 13) {
-            //event.preventDefault();  ????
-            
-            // Validate the form first, if it's ok, THEN submit.
-            if (validateForm()) {
-                $("#loginForm").submit();
-                //return true;
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+
+            if (keycode === 13) {
+                // Validate the form first, if it's ok, THEN submit.
+                if (validateForm()) {
+                    $("#loginForm").submit();
+                }
             }
-        }
-
-        //return false;
-    });
-
-
+        });
 
 });
