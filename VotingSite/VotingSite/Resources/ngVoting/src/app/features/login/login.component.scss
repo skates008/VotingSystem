@@ -1,3 +1,5 @@
+$breakpoint-mobile-lg: 825px;
+
 .form-group-container,
 .login-screen-message {
   background-color: #f3f3f3;
@@ -30,4 +32,10 @@
 
 .error-message{
   font-size:75%;
+}
+
+.voting-container {  
+  @media screen and (min-width: $breakpoint-mobile-lg) {
+    margin-top:20px;
+  } 
 }
