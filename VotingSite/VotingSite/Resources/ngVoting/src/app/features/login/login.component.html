@@ -1,4 +1,4 @@
-<div class="voting-container" *ngIf="model != null">
+<div class="voting-container" *ngIf="model != null && currentPage == ''">
 
   <div class="row row-centered pos">
 
@@ -82,4 +82,9 @@
 
 
   </div>
+</div>
+
+
+<div class="application-container" *ngIf="currentPage == 'Landing'">
+  <app-landing></app-landing>
 </div>

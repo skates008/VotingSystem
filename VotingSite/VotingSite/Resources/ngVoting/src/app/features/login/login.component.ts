@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
 
   model: any = null;
+  currentPage: string = "";
 
   formGroup = new FormGroup({
     ElectionId: new FormControl(),
@@ -58,8 +59,10 @@ export class LoginComponent implements OnInit {
         },
         (response: any) => {
           if (response.status == 200 && response.statusText == "OK") {
-            if (response.url != null) {
-              location.href = response.url;
+            let _url = response.url;
+            if (_url != null) {
+              let dest = _url.substring(_url.lastIndexOf('/') + 1);
+                this.currentPage = dest;
             }
           }
         });
