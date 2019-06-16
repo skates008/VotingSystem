@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using VotingSite.DataAccessServices;
 using VotingSite.Domain;
 using VotingSite.UiDependentModels;
+using VotingSite.UiDependentServices;
 
 
 namespace VotingSite.Controllers
@@ -15,6 +16,7 @@ namespace VotingSite.Controllers
     {
         //private readonly int _currentElectionId;
         private readonly IWebConfigContainer _webConfigContainer;
+        private readonly IUIDLandingPageServices _landingPageServices;
 
         public LandingPgViewModel LandingPgViewModel { get; set; }
 
@@ -22,10 +24,13 @@ namespace VotingSite.Controllers
         /// Initializes a new instance of the <see cref="LandingController"/> class.
         /// </summary>
         public LandingController(
-            IWebConfigContainer webConfigContainer)
+            IWebConfigContainer webConfigContainer,
+            IUIDLandingPageServices landingPageServices)
         {
             _webConfigContainer = webConfigContainer ??
                                   throw new ArgumentNullException(nameof(webConfigContainer));
+            _landingPageServices = landingPageServices ??
+                                   throw new ArgumentNullException(nameof(landingPageServices));
 
             // initialize this by creating a new/empty instance
             this.LandingPgViewModel = new LandingPgViewModel();
@@ -74,8 +79,6 @@ namespace VotingSite.Controllers
             landingPgViewModel.LandingPageTitle = "Success!";
             landingPgViewModel.LandingPageMessage =
                 "<p>Your PIN and the last 4 digits of your Social Security number have been accepted, and you are now logged in.</p><p>By submitting my vote online, I HEARBY CERTIFY UNDER PENALTY OF PERJURY that I was an active or retired member of the California Public Employees' Retirement System (CalPERS) on or before July 1, 2019 and therefore I am eligible to participate in this election and that I personally vote the ballot to be submitted online.</p><p>Select <b>Start Voting</b> below to access your ballot and begin voting.</p><p>If you need help, select <b>Help</b> in the menu bar.</p>";
-
-            // TODO: There may need to be two different models. Gotta figure it out.
 
             // Passing it this way will send it to the layout:
             // Shared\_LandAndVoteLayout.cshtml
