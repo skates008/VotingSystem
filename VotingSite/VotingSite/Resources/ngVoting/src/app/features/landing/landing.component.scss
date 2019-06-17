@@ -1,0 +1,123 @@
+.landing-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: calc(100vh - 125px);
+}
+
+.landing-container,
+.landing-footer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.landing-container {
+  flex: 1;
+}
+
+.landing-container > div,
+.landing-footer > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-ballot {
+  background-color: rgb(216, 216, 216);
+  width: 33.333%;
+}
+
+.landing-success {
+  width: 66.666%;
+  background-color: #fff;
+}
+
+.ballot-review,
+.start-voting {
+  /*margin-top: auto;*/
+  width: 100%;
+  border-top: solid 1px rgb(160, 161, 165);
+  display: flex;
+  justify-content: center;
+}
+
+.start-voting {
+  background-color: rgb(160, 161, 165);
+  justify-content: flex-end;
+}
+
+.ballot-review-btn {
+  background-color: rgb(160, 161, 165);
+  color: #fff;
+  border-radius: 20px;
+  margin: 30px;
+  padding: 10px 30px;
+  font-weight: 700;
+  font-size: 100%;
+}
+
+.start-voting-btn {
+  color: #000;
+  background-color: #fff;
+  border-radius: 20px;
+  margin: 30px;
+  padding: 10px 30px;
+  padding-right: 15px;
+  font-weight: 700;
+  display: flex;
+  font-size: 100%;
+}
+
+.start-voting-btn > div {
+  border-radius: 50%;
+  background-color: rgb(40, 112, 165);
+  color: #fff;
+  font-weight: 700;
+  margin-left: 30px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2px;
+  padding-left: 2px;
+}
+
+.success-content,
+.ballot-content {
+  padding: 25px;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.success-content,
+.ballot-content {
+  overflow: auto;
+}
+
+.landing-footer .landing-success {
+  background-color: rgb(160, 161, 165);
+}
+
+.subtitle {
+  font-size: 125%;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: solid 1px rgb(160, 161, 165);
+}
+
+.position {
+  display: flex;
+  flex-direction: column;
+  margin-bottom:10px;
+}
+
+.position-title {
+  font-size: 125%;
+}
+
+.position-href {
+  color: rgb(160, 161, 165);
+}

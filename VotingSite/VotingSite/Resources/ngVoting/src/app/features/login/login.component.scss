@@ -1,4 +1,4 @@
-$breakpoint-mobile-lg: 825px;
+@import "../../../../../../Content/scss/ec_variables";
 
 .form-group-container,
 .login-screen-message {
@@ -30,8 +30,12 @@ $breakpoint-mobile-lg: 825px;
   margin-bottom: 50px;
 }
 
-.error-message{
-  font-size:75%;
+.error-message {
+  font-size: 75%;
+}
+
+.application-container {
+  width: 100%;
 }
 
 .voting-container {  

@@ -392,6 +392,7 @@
     <Content Include="Resources\ngVoting\protractor.conf.js" />
     <Content Include="Resources\ngVoting\README.md" />
     <Content Include="Resources\ngVoting\src\app\app.component.html" />
+    <Content Include="Resources\ngVoting\src\app\features\landing\landing.component.html" />
     <Content Include="Resources\ngVoting\src\app\features\login\login.component.html" />
     <Content Include="Resources\ngVoting\src\assets\.gitkeep" />
     <Content Include="Resources\ngVoting\src\favicon.ico" />
@@ -447,6 +448,7 @@
     </None>
     <Content Include="Resources\ngVoting\src\styles.scss" />
     <Content Include="Resources\ngVoting\src\app\features\login\login.component.scss" />
+    <Content Include="Resources\ngVoting\src\app\features\landing\landing.component.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\fontawesome.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -539,6 +541,8 @@
     <TypeScriptCompile Include="Resources\ngVoting\src\app\app.component.ts" />
     <TypeScriptCompile Include="Resources\ngVoting\src\app\app.module.ts" />
     <TypeScriptCompile Include="Resources\ngVoting\src\app\features\features.module.ts" />
+    <TypeScriptCompile Include="Resources\ngVoting\src\app\features\landing\landing.component.spec.ts" />
+    <TypeScriptCompile Include="Resources\ngVoting\src\app\features\landing\landing.component.ts" />
     <TypeScriptCompile Include="Resources\ngVoting\src\app\features\login\login.component.spec.ts" />
     <TypeScriptCompile Include="Resources\ngVoting\src\app\features\login\login.component.ts" />
     <TypeScriptCompile Include="Resources\ngVoting\src\environments\environment.prod.ts" />
