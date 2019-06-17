@@ -45,7 +45,7 @@ namespace VotingSiteAPI.Tests.Controllers
         ////    // Act
         ////    var controller = new LoginController(mockLoginServices.Object);
 
-        ////    var result = controller.UserCredentialsAreValid(uc);
+        ////    var result = controller.LoginWebsiteUser(uc);
 
         ////    var resultData = ((OkNegotiatedContentResult<bool>) result).Content;
 
@@ -68,7 +68,7 @@ namespace VotingSiteAPI.Tests.Controllers
         ////    // Act
         ////    var controller = new LoginController(mockLoginServices.Object);
 
-        ////    var result = controller.UserCredentialsAreValid(uc);
+        ////    var result = controller.LoginWebsiteUser(uc);
 
         ////    var resultData = ((OkNegotiatedContentResult<bool>)result).Content;
 
@@ -92,7 +92,7 @@ namespace VotingSiteAPI.Tests.Controllers
         ////    // Act
         ////    var controller = new LoginController(mockLoginServices.Object);
 
-        ////    var result = controller.UserCredentialsAreValid(uc);
+        ////    var result = controller.LoginWebsiteUser(uc);
 
         ////    var resultData = ((OkNegotiatedContentResult<bool>)result).Content;
 

@@ -27,12 +27,11 @@ namespace VotingSite.Tests.Controllers
             // Arrange
             const int expectedElectionId = 1;
 
-            var mockWebConfigReaderService = new Mock<IWebConfigReaderService>();
-            mockWebConfigReaderService.Setup(x => x.GetAppSetting<int>("CurrentElectionId"))
-                .Returns(expectedElectionId);
+            var mockWebConfigContainer = new Mock<IWebConfigContainer>();
+            mockWebConfigContainer.Setup(x => x.ElectionId).Returns(expectedElectionId);
 
-            var uiDepLoginSvcs = new Mock<IUiDependentLoginServices>();
-            uiDepLoginSvcs.Setup(o => o.GetLoginScreenDataAsync(It.IsAny<int>()))
+            var uidLoginServices = new Mock<IUiDependentLoginServices>();
+            uidLoginServices.Setup(o => o.GetLoginScreenDataAsync(It.IsAny<int>()))
                 .Returns<int>(x =>
                     Task.FromResult(new LoginViewModel
                     {
@@ -54,12 +53,6 @@ namespace VotingSite.Tests.Controllers
                         BrowserAgent = ""
                     }));
 
-            // ReSharper disable once IdentifierTypo
-            //var uiDepLoginSvcs = new Mock<IUiDependentLoginServices>();
-            var loginServicesMock = new Mock<LoginServices>();
-
-            var mockUserCredentialsModel = new Mock<IUserCredentialsValidation>();
-
             var request = new Mock<HttpRequestBase>();
             request.Setup(p => p.UserAgent).Returns("userAgent");
             request.Setup(p => p.UserHostAddress).Returns("1.2.3.4");
@@ -67,10 +60,8 @@ namespace VotingSite.Tests.Controllers
             context.Setup(c => c.Request).Returns(request.Object);
 
             var controller = new HomeController(
-                mockWebConfigReaderService.Object,
-                loginServicesMock.Object,
-                uiDepLoginSvcs.Object,
-                mockUserCredentialsModel.Object);
+                mockWebConfigContainer.Object,
+                uidLoginServices.Object);
 
             controller.ControllerContext = new ControllerContext(context.Object, new RouteData(), controller);
 
@@ -82,7 +73,7 @@ namespace VotingSite.Tests.Controllers
 
             Assert.IsNotNull(result);
             Assert.IsNotNull(loginVm);
-            uiDepLoginSvcs.Verify(uut => uut.GetLoginScreenDataAsync(expectedElectionId), Times.Once);
+            uidLoginServices.Verify(uut => uut.GetLoginScreenDataAsync(expectedElectionId), Times.Once);
 
             Assert.AreEqual("1.2.3.4", loginVm.UserIp);
             Assert.AreEqual("userAgent", loginVm.BrowserAgent);

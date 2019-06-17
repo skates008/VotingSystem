@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Web;
 using System.Web.Http;
+
 using VotingSiteAPI.CustomAuthFilter;
-using VotingSiteAPI.Data.Enums;
 using VotingSiteAPI.Domain.Models;
 using VotingSiteAPI.Services;
 using VotingSiteAPI.SharedModels;
@@ -91,16 +91,16 @@ namespace VotingSiteAPI.Controllers
         /// credentials passed to this method match what's in the database. 
         /// </returns>
         [OwinAuthorize]
-        [Route("")] // in other words, just www.theSite.com/api/v1/login
+        [Route("")] // in other words, just "www.theSite.com/api/v1/login"
         [HttpPost]
-        public IHttpActionResult UserCredentialsAreValid(
+        public IHttpActionResult LoginWebsiteUser(
             UserCredentialsModel userCredentials)
         {
-            bool result;
+            UserLoginResponseModel result;
 
             try
             {
-                result = _loginServices.ValidateUserCredentials(userCredentials);
+                result = _loginServices.OrchestrateUserLogin(userCredentials);
             }
             catch (Exception oEx)
             {

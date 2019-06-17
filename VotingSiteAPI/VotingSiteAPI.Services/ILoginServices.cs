@@ -9,6 +9,8 @@ namespace VotingSiteAPI.Services
     {
         RetrievedPageDataModel GetPreLoginElectionData(int electionId);
 
+        UserLoginResponseModel OrchestrateUserLogin(UserCredentialsModel userCredentials);
+
         bool ValidateUserCredentials(UserCredentialsModel userCredentials);
 
         /// <summary>

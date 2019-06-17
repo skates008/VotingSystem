@@ -7,6 +7,8 @@ using VotingSite.DAL;
 using VotingSite.Domain;
 using VotingSite.UiDependentModels;
 
+using VotingSiteAPI.SharedModels;
+
 using AutoMapper;
 
 
@@ -22,6 +24,34 @@ namespace VotingSite.UiDependentServices
             _loginScreenDataAccess = loginScreenDataAccess ??
                                      throw new ArgumentNullException(nameof(loginScreenDataAccess));
         }
+
+
+        public async Task<UserLoginResponseModel> OrchestrateVoterLoginAsync(UserCredentialsModel userCredentials)
+        {
+            //var userCredentialsValid = await
+            //    _userCredentialsValidation.ValidateUserCredentialsAsync(userCredentials);
+
+            //async Task<UserLoginResponseModel> LoginWebsiteUserAsync(
+            //    UserCredentialsModel userCredentialsModel)
+            var loginResponse = await _loginScreenDataAccess.LoginWebsiteUserAsync(userCredentials);
+
+
+
+            //if (!userCredentialsValid)
+            //{
+            //    string errorMessage= "Invalid login attempt. Please try again.";
+            //    ModelState.AddModelError(string.Empty, errorMessage);
+            //    loginVm = _uiDependentLoginServices.VotingIsOpenVerification(loginVm);
+
+            //    return Json(new { model = loginVm, error = errorMessage });
+            //}
+
+
+
+
+            return loginResponse;
+        }
+
 
         /// <inheritdoc />
         /// <summary>
@@ -47,11 +77,13 @@ namespace VotingSite.UiDependentServices
             {
                 // create required claims
                 new Claim(ClaimTypes.NameIdentifier, loginVm.LoginId),
-                new Claim(ClaimTypes.Name, loginVm.LoginPin),
+                
+                // probably shouldn't put both their username AND password
+                // into the cookie, so just putting their username twice. -SKF 6/14/19
+                new Claim(ClaimTypes.Name, loginVm.LoginId),
 
-                // TODO: Verify what we get when .ToString() is called against the LoginViewModel.
-                // custom – my serialized AppUserState (or, in our case, LoginViewModel) object
-                new Claim("userState", loginVm.ToString())
+                new Claim(ClaimTypes.Actor, loginVm.BrowserAgent),
+                new Claim("userIp", loginVm.UserIp)
             };
 
             // SKF 12-June-2019 Might want to do Roles at some point
@@ -111,7 +143,7 @@ namespace VotingSite.UiDependentServices
 
         /// <inheritdoc />
         /// <summary>
-        /// Checks and sets as needed the VotingIsOpen member of the
+        /// Checks and sets as needed the <c>VotingIsOpen</c> member of the
         /// <see cref="LoginViewModel" />.
         /// </summary>
         /// <param name="loginViewModel">

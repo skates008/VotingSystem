@@ -10,9 +10,8 @@ using VotingSite.DataAccessServices.HttpClientHelpers;
 using VotingSite.Domain;
 
 using Newtonsoft.Json;
+using VotingSiteAPI.SharedModels;
 
-
-// in this project, Classes wrap calls to the VotingSiteAPI [solution]
 
 namespace VotingSite.DAL
 {
@@ -104,6 +103,83 @@ namespace VotingSite.DAL
                 throw;
             }
         }
+
+        /// <inheritdoc />
+        /// <summary>
+        /// Attempts to call the API and log the current user into this system.
+        /// <para>
+        /// Calls "https://*/api/v1/login/{userCredentialsModel}" (See: API's
+        /// LoginController) The Body actually contains the
+        /// {userCredentialsModel}.
+        /// </para>
+        /// </summary>
+        /// <param name="userCredentialsModel">
+        /// An instance of the <see cref="UserCredentialsModel"/> class
+        /// containing the username/password entered by the user.
+        /// </param>
+        /// <returns>
+        /// A Task&lt;bool&gt; that indicates whether (true) or not (false)
+        /// the credentials entered by the user are valid.
+        /// </returns>
+        public async Task<UserLoginResponseModel> LoginWebsiteUserAsync(
+            UserCredentialsModel userCredentialsModel)
+        {
+            const string exceptionHeadText =
+                "EXCEPTION in: Task<UserLoginResponseModel> LoginWebsiteUserAsync(int electionId) ***\r\n";
+
+            var httpClient = _httpClientProvider.GetHttpClientInstance();
+
+            try
+            {
+                var callUrl = _webConfigContainer.BaseApiUrl + "login/";
+
+                var myContent = JsonConvert.SerializeObject(userCredentialsModel);
+                var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                var byteContent = new ByteArrayContent(buffer);
+                byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                // build the Authorization header value
+                httpClient.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue(
+                        _webConfigContainer.AuthScheme,
+                        _webConfigContainer.ApiKey);
+
+                HttpResponseMessage response = await httpClient.PostAsync(callUrl, byteContent);
+
+                UserLoginResponseModel callResponse;
+                if (response.IsSuccessStatusCode && (response.StatusCode == HttpStatusCode.OK))
+                {
+                    var data = await response.Content.ReadAsStringAsync();
+
+                    callResponse = JsonConvert.DeserializeObject<UserLoginResponseModel>(data);
+                }
+                else
+                {
+                    throw new Exception("The attempted API call apparently failed. (in LoginWebsiteUserAsync())");
+                }
+
+                return callResponse;
+            }
+            catch (HttpRequestException httpReqException)
+            {
+                // TODO: Add real logging
+                Debug.WriteLine(
+                    exceptionHeadText +
+                    httpReqException.Message + "\r\n" +
+                    httpReqException.StackTrace);
+                throw;
+            }
+            catch (Exception oEx)
+            {
+                // TODO: Add real logging
+                Debug.WriteLine(
+                    exceptionHeadText +
+                    oEx.Message + "\r\n" +
+                    oEx.StackTrace);
+                throw;
+            }
+        }
+
 
     }
 }

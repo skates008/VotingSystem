@@ -3,12 +3,15 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 
 using VotingSite.UiDependentModels;
+using VotingSiteAPI.SharedModels;
 
 
 namespace VotingSite.UiDependentServices
 {
     public interface IUiDependentLoginServices
     {
+        Task<UserLoginResponseModel> OrchestrateVoterLoginAsync(UserCredentialsModel userCredentials);
+
         /// <summary>
         /// Gathers the data needed to display the login page.
         /// </summary>

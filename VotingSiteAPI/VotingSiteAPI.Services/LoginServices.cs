@@ -73,6 +73,162 @@ namespace VotingSiteAPI.Services
         }
 
         /// <summary>
+        /// Orchestrates the user login and logs the attempt.
+        /// </summary>
+        /// <param name="userCredentials">The user credentials model.</param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public UserLoginResponseModel OrchestrateUserLogin(
+            UserCredentialsModel userCredentials)
+        {
+            //result = _loginServices.ValidateUserCredentials(userCredentials);
+
+            var result = new UserLoginResponseModel();
+
+            if (userCredentials == null)
+            {
+                throw new ArgumentNullException(nameof(userCredentials));
+            }
+
+            bool? accountLockedOut = null;
+            try
+            {
+                // check account lockout status
+                accountLockedOut = IsAccountLockedOut(userCredentials);
+                if (accountLockedOut == null)
+                {
+                    // specified user wasn't found, so returning 'Invalid' as the status
+                    result.LoginSuccessful = false;
+                    result.LoginFailureCode = (int) IvrLoginStatusCodes.InvalidCredentials;
+                    result.ErrorInformation = "Invalid Login Attempt.";
+
+                    return result;
+                }
+
+                // if locked out, bail with appropriate code
+                if (accountLockedOut.Value)
+                {
+                    // specified user's account is locked out
+                    result.LoginSuccessful = false;
+                    result.LoginFailureCode = (int)IvrLoginStatusCodes.AccountLockedOut;
+                    result.ErrorInformation = "Account is currently Locked Out.";
+
+                    return result;
+                }
+
+                // check specified user credentials; is voter found, etc.
+                // "Login info Correct?" (From the CalPERS logic diagram for the IVR system)
+                if (!ValidateUserCredentials(userCredentials))
+                {
+                    // if not ok, bail with appropriate code 
+                    result.LoginFailureCode = (int)IvrLoginStatusCodes.InvalidCredentials;
+
+                    return result;
+                }
+
+                // check to see if voter's already voted
+                // if so, again, bail with appropriate code 
+                var votesCastForThisElection = _votesRepository
+                    .GetMany(vote => vote.VoterId.Equals(userCredentials.VoterId)).Any();
+
+                if (votesCastForThisElection)
+                {
+                    // ...If so, return a value indicating that the voter's
+                    // already voted.
+                    result.LoginSuccessful = false;
+                    result.LoginFailureCode = (int)IvrLoginStatusCodes.AlreadyVoted;
+                    result.ErrorInformation = "You have already submitted your votes.";
+
+                    return result;
+                }
+
+                // login credentials verified
+                result.LoginSuccessful = true;
+            }
+            catch (Exception oEx)
+            {
+                Debug.WriteLine(oEx);
+
+                throw;
+            }
+            finally
+            {
+                // log the login attempt whether or not it was successful.
+                var loginAttempt = new LoginAttempt
+                {
+                    BrowserAgent = userCredentials.UserAgent,
+                    UserIp = userCredentials.UserIpAddress,
+                    TimeStamp = DateTime.Now,
+                    EnteredLoginId = userCredentials.UsernameOrId,
+                    SuccessfulLogin = result.LoginSuccessful
+                };
+
+                _loginAttemptsRepo.Add(loginAttempt);
+                var modifiedRecords = 1;
+#if DEBUG
+                _votesRepository.GetDbContext().Database.Log = generatedSql =>
+                    Debug.WriteLine("Generated SQL Query:\r\n" + generatedSql);
+#endif
+                // this is necessary because LINQ to Entities doesn't grok 
+                // DateTime.Now.AddMinutes()
+                var nowMinus20 = DateTime.Now.AddMinutes(-20);
+
+                // check number of attempts in last 20 minutes [per "Phone IVR Voting Login Process" diagram]
+                var loginAttemptsByPIN = _loginAttemptsRepo.GetMany(la =>
+                        la.EnteredLoginId == userCredentials.UsernameOrId &&
+                        la.SuccessfulLogin == false &&
+                        la.TimeStamp >= nowMinus20).Count();
+
+                Voter voter = result.LoginSuccessful
+                    ? _votersRepo.GetById(userCredentials.VoterId)
+                    : _votersRepo.Get(v => v.LoginId == userCredentials.UsernameOrId);
+
+                // the number of attempts we're looking for is 4, but since
+                // the first attempt won't have been written to the db yet,
+                // I've got this set to 3. -SKF 6/10/19
+                if (voter != null)
+                {
+                    // if we had to use ucm.UsernameOrId to find the Voter, it is
+                    // possible they don't exist because the user could have easily
+                    // entered a bad 'Username' | PIN.
+
+                    if (loginAttemptsByPIN > 3)
+                    {
+                        // if they've already got a AccountLockoutExpires
+                        // value, we're not trying to extend it.
+                        if (!voter.AccountLockoutExpires.HasValue)
+                        {
+                            // lock 'em out!
+                            voter.AccountLockoutExpires = DateTime.Now.AddMinutes(29.9);
+                            _votersRepo.Update(voter);
+                            modifiedRecords++;
+                        }
+                    }
+
+                    if (loginAttemptsByPIN <= 3 &&
+                        accountLockedOut.HasValue && !accountLockedOut.Value &&
+                        voter.AccountLockoutExpires != null)
+                    {
+                        // clear the lockout expiration DateTime
+                        voter.AccountLockoutExpires = null;
+                        _votersRepo.Update(voter);
+                        modifiedRecords++;
+                    }
+                }
+
+                // save above change(s)
+                var recordsModified = _votesRepository.GetDbContext().SaveChanges();
+                if (recordsModified < modifiedRecords)
+                {
+                    Debug.WriteLine($"There may have been a failure to write User {loginAttempt.EnteredLoginId}'s Login Attempt or lockout status.");
+                }
+            }
+
+            return result;
+        }
+
+
+        /// <summary>
         /// Checks the credentials entered by the user and returns true or
         /// false based on whether or not those credentials match what's in
         /// the database.
